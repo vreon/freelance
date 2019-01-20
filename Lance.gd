@@ -41,8 +41,10 @@ const WALL_BOUNCE_FACTOR = 0.8
 # Variable jump height (from ground) based on button hold (like Mario)
 
 # Various states
+var on_ceiling = false
 var on_floor = false
 var on_wall = false
+var was_on_ceiling = false
 var was_on_floor = false
 var was_on_wall = false
 var pressing_move = false
@@ -72,6 +74,7 @@ func _physics_process(delta):
 	# TODO: with snap
 	var true_velocity = move_and_slide(velocity, Vector2(0, -1))
 	
+	on_ceiling = is_on_ceiling()
 	on_floor = is_on_floor()
 	on_wall = is_on_wall()
 	
@@ -194,6 +197,7 @@ func _physics_process(delta):
 	
 	was_on_floor = on_floor
 	was_on_wall = on_wall
+	was_on_ceiling = on_ceiling
 
 func handle_collision(collider, position):
 	var attack_result = null
@@ -238,9 +242,21 @@ func handle_collision(collider, position):
 		# Find out how fast we were going, and whether
 		# we need to bounce or what.
 		
+		# TODO: DRY floor and ceiling branches
+		
 		if on_floor:
 			if !was_on_floor:
-				if velocity.y >= FLOOR_BOUNCE_SPEED:
+				if abs(velocity.y) >= FLOOR_BOUNCE_SPEED:
+					$Hit.play()
+					velocity.y *= -FLOOR_BOUNCE_FACTOR
+				else:
+					$Land.play()
+			else:
+				velocity.y = 0
+				
+		if on_ceiling:
+			if !was_on_ceiling:
+				if abs(velocity.y) >= FLOOR_BOUNCE_SPEED:
 					$Hit.play()
 					velocity.y *= -FLOOR_BOUNCE_FACTOR
 				else:
