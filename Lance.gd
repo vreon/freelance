@@ -9,6 +9,7 @@ signal health_changed
 # const GROUND_FRICTION = 0.1
 # const MAX_AIR_SPEED = 170
 # const MAX_GROUND_SPEED = 100
+# const HITSTUN_SPEED = 170
 # const FLAP_DECELERATE = true
 
 # Joust-like
@@ -18,6 +19,7 @@ const AIR_FRICTION = 0.001
 const GROUND_FRICTION = 0.01
 const MAX_AIR_SPEED = 200
 const MAX_GROUND_SPEED = 200
+const HITSTUN_SPEED = 150
 const FLAP_DECELERATE = false
 
 var gravity = Vector2(0, 300)
@@ -218,7 +220,7 @@ func handle_collision(collider, position):
 		match touch_result:
 			"hurt", "burned", "shocked":
 				$Ouch.play()
-				velocity = (self.position - position).normalized() * MAX_AIR_SPEED
+				velocity = (self.position - position).normalized() * HITSTUN_SPEED
 				hitstun = HITSTUN_DURATION
 				continue
 			"hurt":
