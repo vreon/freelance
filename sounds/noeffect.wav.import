@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/noeffect.wav-c8e8885e9a6ba42740c7ae689cf611a4.sample"
+
+[deps]
+
+source_file="res://sounds/noeffect.wav"
+dest_files=[ "res://.import/noeffect.wav-c8e8885e9a6ba42740c7ae689cf611a4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

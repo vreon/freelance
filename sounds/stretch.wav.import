@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/stretch.wav-4a52778ea73d5e2cff5d6e47f6ba19ed.sample"
+
+[deps]
+
+source_file="res://sounds/stretch.wav"
+dest_files=[ "res://.import/stretch.wav-4a52778ea73d5e2cff5d6e47f6ba19ed.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

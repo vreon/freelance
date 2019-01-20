@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/flamejump.wav-814ffe6e3b4b8929856e2d6261d3db5d.sample"
+
+[deps]
+
+source_file="res://sounds/flamejump.wav"
+dest_files=[ "res://.import/flamejump.wav-814ffe6e3b4b8929856e2d6261d3db5d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

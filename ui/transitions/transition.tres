@@ -1,0 +1,24 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform vec4 color : hint_color = vec4(0, 0, 0, 1);
+uniform float percent : hint_range(0, 1) = 0.;
+uniform float smooth_percent : hint_range(-1, 1) = 0.;
+
+void fragment() {
+	vec4 t = texture(TEXTURE, UV);
+	float a = smoothstep(t.r, t.r + smooth_percent, percent);
+	COLOR = vec4(color.rgb, color.a * a);
+}"
+
+[resource]
+
+shader = SubResource( 1 )
+shader_param/color = Color( 0, 0, 0, 1 )
+shader_param/percent = 0.0
+shader_param/smooth_percent = 0.0
+

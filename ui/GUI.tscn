@@ -1,0 +1,185 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://ui/GUI.gd" type="Script" id=1]
+[ext_resource path="res://ui/textures/frame.png" type="Texture" id=2]
+[ext_resource path="res://ui/textures/dither.png" type="Texture" id=3]
+[ext_resource path="res://ui/fonts/monogram_o.tres" type="BitmapFont" id=4]
+[ext_resource path="res://ui/textures/lance.png" type="Texture" id=5]
+[ext_resource path="res://ui/fonts/6x10_o2.tres" type="BitmapFont" id=6]
+[ext_resource path="res://ui/textures/frame_empty.png" type="Texture" id=7]
+[ext_resource path="res://ui/textures/health_lance.png" type="Texture" id=8]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "hurt"
+length = 0.1
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:tint_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:tint_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.001 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="."]
+modulate = Color( 0.176471, 0.2, 0.239216, 1 )
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_top = -32.0
+margin_right = 2.0
+margin_bottom = 5.0
+texture = ExtResource( 2 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="dither" type="Sprite" parent="."]
+modulate = Color( 0.419608, 0.466667, 0.552941, 1 )
+position = Vector2( 195, 221 )
+texture = ExtResource( 3 )
+offset = Vector2( -48, -12 )
+flip_h = true
+flip_v = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color( 0.419608, 0.466667, 0.552941, 1 )
+margin_top = 192.0
+margin_right = 132.0
+margin_bottom = 226.0
+
+[node name="WorldName" type="Label" parent="."]
+modulate = Color( 0.501961, 0.541176, 0.662745, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 156.0
+margin_top = 197.0
+margin_right = -7.0
+margin_bottom = -16.0
+custom_fonts/font = ExtResource( 4 )
+text = "World 0-0"
+align = 2
+
+[node name="LevelName" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 162.0
+margin_top = 208.0
+margin_right = -7.0
+margin_bottom = -4.0
+rect_pivot_offset = Vector2( 31, 18 )
+custom_fonts/font = ExtResource( 4 )
+text = "Debug Realm"
+align = 2
+
+[node name="PlayerPortraitFrame" type="NinePatchRect" parent="."]
+margin_left = 3.0
+margin_top = 195.0
+margin_right = 29.0
+margin_bottom = 221.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 9, 9 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="PlayerPortrait" type="Sprite" parent="PlayerPortraitFrame"]
+position = Vector2( 1, 1 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="PlayerName" type="Label" parent="."]
+margin_left = 31.0
+margin_top = 196.0
+margin_right = 73.0
+margin_bottom = 209.0
+rect_pivot_offset = Vector2( 226, -19 )
+custom_fonts/font = ExtResource( 6 )
+text = "Lance"
+autowrap = true
+
+[node name="PlayerHealth" type="TextureProgress" parent="."]
+margin_left = 31.0
+margin_top = 211.0
+margin_right = 123.0
+margin_bottom = 220.0
+value = 84.0
+texture_under = ExtResource( 7 )
+texture_progress = ExtResource( 8 )
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+
+[node name="Tween" type="Tween" parent="PlayerHealth"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerHealth"]
+anims/hurt = SubResource( 1 )
+anims/idle = SubResource( 2 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_left = 109.0
+margin_top = 196.0
+margin_right = 123.0
+margin_bottom = 209.0
+texture = ExtResource( 7 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="."]
+margin_left = 93.0
+margin_top = 196.0
+margin_right = 107.0
+margin_bottom = 209.0
+texture = ExtResource( 7 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="NinePatchRect4" type="NinePatchRect" parent="."]
+margin_left = 77.0
+margin_top = 196.0
+margin_right = 91.0
+margin_bottom = 209.0
+texture = ExtResource( 7 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[connection signal="tween_completed" from="PlayerHealth/Tween" to="." method="_on_Tween_tween_completed"]

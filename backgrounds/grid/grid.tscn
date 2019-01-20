@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://tilesets/debug/grid.png" type="Texture" id=1]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 400, 224 )
+
+[node name="Grid" type="Sprite" parent="ParallaxLayer"]
+modulate = Color( 1, 1, 1, 0.0823529 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 400, 224 )
+

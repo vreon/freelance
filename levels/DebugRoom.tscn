@@ -1,0 +1,166 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://levels/DebugRoom.gd" type="Script" id=1]
+[ext_resource path="res://tilesets/debug/debug.tres" type="TileSet" id=2]
+[ext_resource path="res://backgrounds/grid/grid.tscn" type="PackedScene" id=3]
+[ext_resource path="res://utilities/Door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://enemies/Dummy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ui/fonts/6x10.tres" type="BitmapFont" id=6]
+[ext_resource path="res://Lance.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ui/GUI.tscn" type="PackedScene" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+extents = Vector2( 112, 96 )
+
+[node name="DebugRoom" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 13, 10, 0, 14, 10, 0, 15, 10, 0, 16, 10, 0, 17, 10, 0, 196608, 15, 0, 196610, 15, 0, 196612, 15, 0, 196614, 15, 0, 196616, 15, 0, 262144, 15, 0, 262145, 15, 0, 262146, 15, 0, 262147, 15, 0, 262148, 15, 0, 262149, 15, 0, 262150, 15, 0, 262151, 15, 0, 262152, 15, 0, 262158, 10, 0, 262160, 10, 0, 327680, 15, 0, 327681, 15, 0, 327682, 15, 0, 327683, 15, 0, 327684, 15, 0, 327685, 15, 0, 327686, 15, 0, 327687, 15, 0, 327688, 15, 0, 327693, 10, 0, 327694, 10, 0, 327696, 10, 0, 327697, 10, 0, 393216, 15, 0, 393217, 15, 0, 393218, 15, 0, 393219, 15, 0, 393220, 15, 0, 393221, 15, 0, 393222, 15, 0, 393223, 15, 0, 393224, 15, 0, 458752, 15, 0, 458753, 15, 0, 458754, 15, 0, 458755, 15, 0, 458756, 15, 0, 458757, 15, 0, 458758, 15, 0, 458759, 15, 0, 458760, 15, 0, 458764, 10, 0, 458765, 10, 0, 458766, 10, 0, 458768, 10, 0, 458769, 10, 0, 524288, 15, 0, 524289, 7, 0, 524290, 8, 0, 524291, 8, 0, 524292, 8, 0, 524293, 8, 0, 524294, 8, 0, 524295, 9, 0, 524296, 15, 0, 524302, 10, 0, 524304, 10, 0, 589824, 15, 0, 589825, 15, 0, 589826, 15, 0, 589827, 15, 0, 589828, 15, 0, 589829, 15, 0, 589830, 15, 0, 589831, 15, 0, 589832, 15, 0, 655360, 15, 0, 655361, 15, 0, 655362, 15, 0, 655363, 15, 0, 655364, 15, 0, 655365, 15, 0, 655366, 15, 0, 655367, 15, 0, 655368, 15, 0, 655381, 14, 0, 655382, 10, 0, 655383, 10, 0, 655384, 11, 0, 655385, 12, 0, 655386, 13, 0, 655390, 4, 0, 655391, 5, 0, 655392, 6, 0, 655393, 10, 0, 655394, 10, 0, 655395, 16, 0, 720896, 15, 0, 720897, 15, 0, 720898, 15, 0, 720899, 15, 0, 720900, 15, 0, 720901, 15, 0, 720902, 15, 0, 720903, 15, 0, 720904, 15, 0, 720916, 14, 0, 720917, 15, 0, 720918, 15, 0, 720919, 15, 0, 720920, 15, 0, 720921, 15, 0, 720922, 15, 0, 720923, 10, 0, 720924, 10, 0, 720925, 10, 0, 720926, 15, 0, 720927, 15, 0, 720928, 15, 0, 720929, 15, 0, 720930, 15, 0, 720931, 15, 0, 720932, 16, 0, 786432, 15, 0, 786433, 15, 0, 786434, 15, 0, 786435, 15, 0, 786436, 15, 0, 786437, 15, 0, 786438, 15, 0, 786439, 15, 0, 786440, 15, 0, 786443, 19, 0, 786444, 20, 0, 786445, 10, 0, 786446, 10, 0, 786447, 17, 0, 786448, 18, 0, 786451, 14, 0, 786452, 15, 0, 786453, 15, 0, 786454, 15, 0, 786455, 15, 0, 786456, 15, 0, 786457, 15, 0, 786458, 15, 0, 786459, 15, 0, 786460, 15, 0, 786461, 15, 0, 786462, 15, 0, 786463, 15, 0, 786464, 15, 0, 786465, 15, 0, 786466, 15, 0, 786467, 15, 0, 786468, 15, 0, 786469, 16, 0, 917493, 10, 0, 917494, 10, 0, 917495, 10, 0, 917496, 10, 0, 917497, 10, 0, 917498, 10, 0, 917499, 10, 0, 917500, 10, 0, 917501, 10, 0, 917502, 10, 0, 917503, 10, 0, 851968, 10, 0, 851969, 10, 0, 851970, 10, 0, 851971, 10, 0, 851972, 10, 0, 851973, 10, 0, 851974, 10, 0, 851975, 10, 0, 851976, 10, 0, 851977, 10, 0, 851978, 10, 0, 851979, 10, 0, 851980, 10, 0, 851981, 10, 0, 851982, 10, 0, 851983, 10, 0, 851984, 10, 0, 851985, 10, 0, 851986, 10, 0, 851987, 10, 0, 851988, 10, 0, 851989, 10, 0, 851990, 10, 0, 851991, 10, 0, 851992, 10, 0, 851993, 10, 0, 851994, 10, 0, 851995, 10, 0, 851996, 10, 0, 851997, 10, 0, 851998, 10, 0, 851999, 10, 0, 852000, 10, 0, 852001, 10, 0, 852002, 10, 0, 852003, 10, 0, 852004, 10, 0, 852005, 10, 0, 852006, 10, 0, 852007, 10, 0, 852008, 10, 0, 852009, 10, 0, 852010, 10, 0, 852011, 10, 0, 852012, 10, 0, 852013, 10, 0, 852014, 10, 0, 852015, 10, 0, 852016, 10, 0, 852017, 10, 0 )
+
+[node name="GridBackground" parent="." instance=ExtResource( 3 )]
+
+[node name="FarDoor" parent="." instance=ExtResource( 4 )]
+position = Vector2( 96, 96 )
+destination_position = "SpawnFar"
+
+[node name="NoFlyDoor" parent="." instance=ExtResource( 4 )]
+position = Vector2( 64, 96 )
+destination_level = "DebugNoFly"
+
+[node name="BossTestDoor" parent="." instance=ExtResource( 4 )]
+position = Vector2( 96, 176 )
+destination_level = "BossTest"
+
+[node name="CityTestDoor" parent="." instance=ExtResource( 4 )]
+position = Vector2( 64, 176 )
+destination_level = "CityTest"
+
+[node name="GrasslandDoor" parent="." instance=ExtResource( 4 )]
+position = Vector2( 32, 176 )
+destination_level = "GrasslandTest"
+
+[node name="DebugDoor" parent="." instance=ExtResource( 4 )]
+position = Vector2( 624, 176 )
+
+[node name="DebugDoor4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 32, 96 )
+destination_level = "DebugLava"
+
+[node name="DummyAttackable" parent="." instance=ExtResource( 5 )]
+modulate = Color( 0.278431, 0.768627, 0.0196078, 1 )
+position = Vector2( 384, 96 )
+attack_result = "attacked"
+
+[node name="DummyWall" parent="." instance=ExtResource( 5 )]
+position = Vector2( 352, 96 )
+
+[node name="DummyShield" parent="." instance=ExtResource( 5 )]
+modulate = Color( 0, 0.356863, 1, 1 )
+position = Vector2( 416, 96 )
+attack_result = "deflected"
+
+[node name="DummyEnemy" parent="." instance=ExtResource( 5 )]
+modulate = Color( 1, 0.619608, 0, 1 )
+position = Vector2( 448, 96 )
+attack_result = "attacked"
+touch_result = "hurt"
+
+[node name="DummySpikes" parent="." instance=ExtResource( 5 )]
+modulate = Color( 0.192157, 0.192157, 0.192157, 1 )
+position = Vector2( 480, 96 )
+attack_result = "touched"
+touch_result = "hurt"
+
+[node name="DummyLava" parent="." instance=ExtResource( 5 )]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 512, 96 )
+attack_result = "touched"
+touch_result = "burned"
+
+[node name="DummyShock" parent="." instance=ExtResource( 5 )]
+modulate = Color( 0, 1, 0.988235, 1 )
+position = Vector2( 544, 96 )
+attack_result = "touched"
+touch_result = "shocked"
+
+[node name="Label" type="Label" parent="."]
+margin_left = 68.0
+margin_top = 159.0
+margin_right = 79.0
+margin_bottom = 173.0
+custom_fonts/font = ExtResource( 6 )
+text = "C"
+
+[node name="Label7" type="Label" parent="."]
+margin_left = 35.0
+margin_top = 159.0
+margin_right = 46.0
+margin_bottom = 173.0
+custom_fonts/font = ExtResource( 6 )
+text = "G"
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 64.0
+margin_top = 80.0
+margin_right = 81.0
+margin_bottom = 94.0
+custom_fonts/font = ExtResource( 6 )
+text = "NF"
+
+[node name="Label4" type="Label" parent="."]
+margin_left = 97.0
+margin_top = 80.0
+margin_right = 114.0
+margin_bottom = 94.0
+custom_fonts/font = ExtResource( 6 )
+text = "->"
+
+[node name="Label5" type="Label" parent="."]
+margin_left = 624.0
+margin_top = 160.0
+margin_right = 641.0
+margin_bottom = 174.0
+custom_fonts/font = ExtResource( 6 )
+text = "<-"
+
+[node name="Label6" type="Label" parent="."]
+margin_left = 36.0
+margin_top = 80.0
+margin_right = 47.0
+margin_bottom = 94.0
+custom_fonts/font = ExtResource( 6 )
+text = "L"
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 99.0
+margin_top = 159.0
+margin_right = 108.0
+margin_bottom = 172.0
+custom_fonts/font = ExtResource( 6 )
+text = "B"
+
+[node name="Lance" parent="." instance=ExtResource( 7 )]
+position = Vector2( 160, 176 )
+
+[node name="SpawnFar" type="Position2D" parent="."]
+position = Vector2( 634, 197 )
+
+[node name="NoFlyZone" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoFlyZone"]
+position = Vector2( 192, 544 )
+shape = SubResource( 1 )
+
+[node name="Node" type="Node" parent="."]
+
+[node name="GUI" parent="." instance=ExtResource( 8 )]
+
+[connection signal="health_changed" from="Lance" to="GUI" method="_on_Lance_health_changed"]
+[connection signal="body_entered" from="NoFlyZone" to="Lance" method="_on_no_fly_zone_entered"]
+[connection signal="body_exited" from="NoFlyZone" to="Lance" method="_on_no_fly_zone_exited"]

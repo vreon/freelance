@@ -1,0 +1,2 @@
+func touched():
+	return "burned"

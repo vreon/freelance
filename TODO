@@ -1,0 +1,32 @@
+GENERAL
+- 400x224
+
+UI
+- Powerups or debuffs
+
+GAMEPLAY
+- Switch to hitbox based damage detection
+- Kirby-style water volumes?
+- An "escape" level
+- "Collect 8 red coins before time is up" minigame
+- Horizontal dash attack?
+> No-fly zones?
+- Item boxes that you hit from the top!
+- "Combat rooms", defeat all enemies to advance
+
+POWERUPS
+- Enemies drop powerups sometimes?
+- Invincibility of course
+- Health up items obvs
+- Speedup? (Temporary or until you get hurt)
+- Horizontal projectiles? (with optional charge + recoil)
+
+ENEMIES
+- flying enemy variations:
+  - hit if higher (classic rules)
+  - hit by dropping (Lance rules)
+  - flyer that splits into two copies after a while (mitosis)
+  - flyer spawns (classic style)
+  - flyer teleports (mage?)
+  - flyer fires projectiles (again mage? kamek-like)
+- Something that climbs on walls

@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://tilesets/city/city.png" type="Texture" id=1]
+
+
+
+
+
+[sub_resource type="RectangleShape2D" id=1]
+
+extents = Vector2( 8, 7 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Left Block" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 16, 16 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Left Block"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left Block/StaticBody2D"]
+position = Vector2( 0, 1 )
+shape = SubResource( 1 )
+
+[node name="Middle Block" type="Sprite" parent="."]
+position = Vector2( 16, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 16, 0, 16, 16 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Middle Block"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Middle Block/StaticBody2D"]
+position = Vector2( 0, 1 )
+shape = SubResource( 1 )
+
+[node name="Girder V" type="Sprite" parent="."]
+position = Vector2( 16, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 16, 16, 16, 16 )
+
+[node name="Right Block" type="Sprite" parent="."]
+position = Vector2( 32, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 0, 16, 16 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Right Block"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right Block/StaticBody2D"]
+position = Vector2( 0, 1 )
+shape = SubResource( 1 )
+

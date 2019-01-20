@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/shock.wav-b4a9e92a9be2a01eb421d8a81b34ca0e.sample"
+
+[deps]
+
+source_file="res://sounds/shock.wav"
+dest_files=[ "res://.import/shock.wav-b4a9e92a9be2a01eb421d8a81b34ca0e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
