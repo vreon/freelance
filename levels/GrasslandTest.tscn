@@ -27,7 +27,6 @@ position = Vector2( 15, 166 )
 
 [node name="AutoCameraBounds" type="Node" parent="."]
 script = ExtResource( 6 )
-tile_map = NodePath("")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

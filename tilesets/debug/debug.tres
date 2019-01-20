@@ -79,6 +79,7 @@ extents = Vector2( 8, 8 )
 0/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
+"one_way_margin": 0.0,
 "shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 15.5 )
 } ]
@@ -94,6 +95,7 @@ extents = Vector2( 8, 8 )
 1/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
+"one_way_margin": 0.0,
 "shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 15.5 )
 } ]
@@ -109,6 +111,7 @@ extents = Vector2( 8, 8 )
 2/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
+"one_way_margin": 0.0,
 "shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 15.5 )
 } ]
@@ -124,6 +127,7 @@ extents = Vector2( 8, 8 )
 3/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
+"one_way_margin": 0.0,
 "shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 15.5 )
 } ]
@@ -139,6 +143,7 @@ extents = Vector2( 8, 8 )
 4/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
+"one_way_margin": 0.0,
 "shape": SubResource( 12 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
@@ -154,6 +159,7 @@ extents = Vector2( 8, 8 )
 5/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
+"one_way_margin": 0.0,
 "shape": SubResource( 13 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
@@ -169,6 +175,7 @@ extents = Vector2( 8, 8 )
 6/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
+"one_way_margin": 0.0,
 "shape": SubResource( 14 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
@@ -184,6 +191,7 @@ extents = Vector2( 8, 8 )
 7/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
+"one_way_margin": 0.0,
 "shape": SubResource( 15 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
@@ -199,6 +207,7 @@ extents = Vector2( 8, 8 )
 8/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
+"one_way_margin": 0.0,
 "shape": SubResource( 15 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
@@ -214,6 +223,7 @@ extents = Vector2( 8, 8 )
 9/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
+"one_way_margin": 0.0,
 "shape": SubResource( 16 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
@@ -229,6 +239,7 @@ extents = Vector2( 8, 8 )
 10/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
+"one_way_margin": 0.0,
 "shape": SubResource( 2 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
@@ -244,6 +255,7 @@ extents = Vector2( 8, 8 )
 11/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
+"one_way_margin": 0.0,
 "shape": SubResource( 3 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
@@ -259,6 +271,7 @@ extents = Vector2( 8, 8 )
 12/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
+"one_way_margin": 0.0,
 "shape": SubResource( 4 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
@@ -274,6 +287,7 @@ extents = Vector2( 8, 8 )
 13/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
+"one_way_margin": 0.0,
 "shape": SubResource( 5 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
@@ -289,6 +303,7 @@ extents = Vector2( 8, 8 )
 14/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
+"one_way_margin": 0.0,
 "shape": SubResource( 6 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
@@ -314,6 +329,7 @@ extents = Vector2( 8, 8 )
 16/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
+"one_way_margin": 0.0,
 "shape": SubResource( 7 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
@@ -329,6 +345,7 @@ extents = Vector2( 8, 8 )
 17/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
+"one_way_margin": 0.0,
 "shape": SubResource( 8 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
@@ -344,6 +361,7 @@ extents = Vector2( 8, 8 )
 18/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
+"one_way_margin": 0.0,
 "shape": SubResource( 9 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
@@ -359,6 +377,7 @@ extents = Vector2( 8, 8 )
 19/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
+"one_way_margin": 0.0,
 "shape": SubResource( 10 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
@@ -374,6 +393,7 @@ extents = Vector2( 8, 8 )
 20/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
+"one_way_margin": 0.0,
 "shape": SubResource( 11 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
@@ -389,6 +409,7 @@ extents = Vector2( 8, 8 )
 21/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
+"one_way_margin": 0.0,
 "shape": SubResource( 2 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]

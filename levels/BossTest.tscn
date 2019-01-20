@@ -1,15 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://levels/BossTest.gd" type="Script" id=1]
 [ext_resource path="res://backgrounds/leo/stars.png" type="Texture" id=2]
 [ext_resource path="res://utilities/Door.tscn" type="PackedScene" id=3]
-[ext_resource path="res://utilities/Door.gd" type="Script" id=4]
-[ext_resource path="res://Lance.tscn" type="PackedScene" id=5]
-[ext_resource path="res://sprites/bubble.png" type="Texture" id=6]
-[ext_resource path="res://ui/ui_doodle.png" type="Texture" id=7]
-
-
-
+[ext_resource path="res://Lance.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sprites/bubble.png" type="Texture" id=5]
+[ext_resource path="res://ui/ui_doodle.png" type="Texture" id=6]
 
 [sub_resource type="Shader" id=1]
 
@@ -103,21 +99,19 @@ motion_scale = Vector2( 0, 0 )
 material = SubResource( 2 )
 texture = ExtResource( 2 )
 
-[node name="DebugDoor" type="Node2D" parent="." instance=ExtResource( 3 )]
+[node name="DebugDoor" parent="." instance=ExtResource( 3 )]
 position = Vector2( 192, 48 )
-scale = Vector2( 1, 1 )
-script = ExtResource( 4 )
 
-[node name="Lance" parent="." instance=ExtResource( 5 )]
+[node name="Lance" parent="." instance=ExtResource( 4 )]
 position = Vector2( 200, 71 )
 
 [node name="Bubble" type="Sprite" parent="Lance"]
 modulate = Color( 1, 1, 1, 0.215686 )
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ui_doodle" type="Sprite" parent="CanvasLayer"]
 position = Vector2( 200, 112 )
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 

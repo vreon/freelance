@@ -37,27 +37,43 @@ position = Vector2( 72, 42 )
 
 [node name="Ignorb" parent="." instance=ExtResource( 5 )]
 position = Vector2( 304, 80 )
+repel_distance = 50
+show_repel_radius = true
 
 [node name="Ignorb3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 576, 224 )
+repel_distance = 50
+show_repel_radius = true
 
 [node name="Ignorb4" parent="." instance=ExtResource( 5 )]
 position = Vector2( 592, 304 )
+repel_distance = 50
+show_repel_radius = true
 
 [node name="Ignorb5" parent="." instance=ExtResource( 5 )]
 position = Vector2( 576, 272 )
+repel_distance = 50
+show_repel_radius = true
 
 [node name="Ignorb6" parent="." instance=ExtResource( 5 )]
 position = Vector2( 624, 304 )
+repel_distance = 50
+show_repel_radius = true
 
 [node name="Ignorb7" parent="." instance=ExtResource( 5 )]
 position = Vector2( 656, 304 )
+repel_distance = 50
+show_repel_radius = true
 
 [node name="Ignorb8" parent="." instance=ExtResource( 5 )]
 position = Vector2( 672, 272 )
+repel_distance = 50
+show_repel_radius = true
 
 [node name="Ignorb9" parent="." instance=ExtResource( 5 )]
 position = Vector2( 672, 224 )
+repel_distance = 50
+show_repel_radius = true
 
 [node name="City" parent="." instance=ExtResource( 6 )]
 
