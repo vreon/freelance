@@ -10,7 +10,7 @@ signal health_changed
 # const MAX_AIR_SPEED = 170
 # const MAX_GROUND_SPEED = 100
 # const HITSTUN_SPEED = 170
-# const FLAP_DECELERATE = true
+# const FLAP_DECELERATE_FACTOR = 0.5
 
 # Joust-like
 const GROUND_MOVE_FORCE = 2
@@ -20,7 +20,7 @@ const GROUND_FRICTION = 0.01
 const MAX_AIR_SPEED = 200
 const MAX_GROUND_SPEED = 200
 const HITSTUN_SPEED = 150
-const FLAP_DECELERATE = false
+const FLAP_DECELERATE_FACTOR = 1.0
 
 var gravity = Vector2(0, 300)
 const JUMP_FORCE = 170
@@ -116,9 +116,9 @@ func _physics_process(delta):
 			$Flap.play()
 			play_anim("flap")
 			
-			# Flapping helps you kill off unwanted horizontal velocity
-			if FLAP_DECELERATE and sign(velocity.x) != facing_dir:
-				velocity.x *= 0.5
+			# Flapping may help you kill off unwanted horizontal velocity
+			if sign(velocity.x) != facing_dir:
+				velocity.x *= FLAP_DECELERATE_FACTOR
 	elif can_move:
 		if on_floor:
 			if abs(velocity.x) > 1:
