@@ -2,12 +2,24 @@ extends KinematicBody2D
 
 signal health_changed
 
-const GROUND_MOVE_FORCE = 5
-const AIR_MOVE_FORCE = 5
-const AIR_FRICTION = 0.01
-const GROUND_FRICTION = 0.1
-const MAX_AIR_SPEED = 170
-const MAX_GROUND_SPEED = 100
+# Kirby-like
+# const GROUND_MOVE_FORCE = 5
+# const AIR_MOVE_FORCE = 5
+# const AIR_FRICTION = 0.01
+# const GROUND_FRICTION = 0.1
+# const MAX_AIR_SPEED = 170
+# const MAX_GROUND_SPEED = 100
+# const FLAP_DECELERATE = true
+
+# Joust-like
+const GROUND_MOVE_FORCE = 2
+const AIR_MOVE_FORCE = 3
+const AIR_FRICTION = 0.001
+const GROUND_FRICTION = 0.01
+const MAX_AIR_SPEED = 200
+const MAX_GROUND_SPEED = 200
+const FLAP_DECELERATE = false
+
 var gravity = Vector2(0, 300)
 const JUMP_FORCE = 170
 const FLAP_FORCE = 115
@@ -19,7 +31,7 @@ const FLOOR_BOUNCE_SPEED = MAX_AIR_SPEED * (1 - AIR_FRICTION)
 const FLOOR_BOUNCE_FACTOR = 0.5
 
 # When and how hard to bounce off of a wall
-const WALL_BOUNCE_SPEED = MAX_GROUND_SPEED
+const WALL_BOUNCE_SPEED = 100
 const WALL_BOUNCE_FACTOR = 0.8
 
 # TODO ideas
@@ -53,6 +65,8 @@ func _ready():
 		attack_trail.visible = true
 	
 func _physics_process(delta):
+	anim_player.playback_speed = 1
+	
 	# TODO: with snap
 	var true_velocity = move_and_slide(velocity, Vector2(0, -1))
 	
@@ -98,12 +112,13 @@ func _physics_process(delta):
 			play_anim("flap")
 			
 			# Flapping helps you kill off unwanted horizontal velocity
-			if sign(velocity.x) != facing_dir:
+			if FLAP_DECELERATE and sign(velocity.x) != facing_dir:
 				velocity.x *= 0.5
 	elif can_move:
 		if on_floor:
-			if pressing_move:
+			if abs(velocity.x) > 1:
 				play_anim("walk")
+				anim_player.playback_speed = velocity.x / 50  # TODO: lerp
 			else:
 				play_anim("idle")
 		elif anim_player.current_animation != "flap":
@@ -161,6 +176,9 @@ func _physics_process(delta):
 		sprite.modulate = Color(1.0, 1.0, 1.0)
 
 	# Bookkeeping
+	
+	if abs(velocity.x) <= 1:
+		velocity.x = 0
 	
 	if velocity.y <= 0:
 		attacking = false
