@@ -20,6 +20,7 @@ tile_data = PoolIntArray( -1, 0, 196611, -65536, 0, 196611, -65535, 0, 196609, -
 
 [node name="DebugDoor" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1200, 128 )
+destination_level = "GrasslandTest2"
 
 [node name="Lance" parent="." instance=ExtResource( 4 )]
 position = Vector2( 15, 166 )
