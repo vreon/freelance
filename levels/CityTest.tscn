@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://levels/CityTest.gd" type="Script" id=1]
 [ext_resource path="res://tilesets/city/city.tres" type="TileSet" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Lance.tscn" type="PackedScene" id=7]
 [ext_resource path="res://utilities/AutoCameraBounds.gd" type="Script" id=8]
 [ext_resource path="res://ui/GUI.tscn" type="PackedScene" id=9]
+[ext_resource path="res://sprites/radial.png" type="Texture" id=10]
 
 [node name="CityTest" type="Node2D"]
 script = ExtResource( 1 )
@@ -90,5 +91,22 @@ camera_man = NodePath("../Lance")
 position = Vector2( 224, 55 )
 
 [node name="GUI" parent="." instance=ExtResource( 9 )]
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 452.57, 187.928 )
+texture = ExtResource( 10 )
+color = Color( 0, 0.345098, 1, 1 )
+
+[node name="Light2D3" type="Light2D" parent="."]
+position = Vector2( -74.3187, 365.154 )
+texture = ExtResource( 10 )
+texture_scale = 1.51
+color = Color( 1, 0, 0, 1 )
+
+[node name="Light2D2" type="Light2D" parent="."]
+position = Vector2( 124.314, -35.9909 )
+texture = ExtResource( 10 )
+texture_scale = 1.51
+color = Color( 0.384314, 0.65098, 0.882353, 1 )
 
 [connection signal="health_changed" from="Lance" to="GUI" method="_on_Lance_health_changed"]

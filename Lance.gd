@@ -23,8 +23,9 @@ const HITSTUN_SPEED = 150
 const FLAP_DECELERATE_FACTOR = 1.0
 
 var gravity = Vector2(0, 300)
-const JUMP_FORCE = 170
-const FLAP_FORCE = 115
+var drag = AIR_FRICTION
+var jump_force = 170
+var flap_force = 115
 const MAX_FALL_SPEED = 200
 const HITSTUN_DURATION = 0.3
 
@@ -109,11 +110,11 @@ func _physics_process(delta):
 		attacking = false
 		
 		if on_floor:
-			jump_speed = JUMP_FORCE
+			jump_speed = jump_force
 			$Jump.play()
 			play_anim("flap")
 		elif can_fly:
-			jump_speed = FLAP_FORCE
+			jump_speed = flap_force
 			$Flap.play()
 			play_anim("flap")
 			
@@ -145,7 +146,7 @@ func _physics_process(delta):
 	if on_floor and not pressing_move:
 		velocity.x *= (1 - GROUND_FRICTION)
 	else:
-		velocity *= (1 - AIR_FRICTION)
+		velocity *= (1 - drag)
 
 	# ... gravity
 	velocity += gravity * delta
@@ -288,3 +289,38 @@ func _on_no_fly_zone_entered(body):
 func _on_no_fly_zone_exited(body):
 	if body == self:
 		can_fly = true
+		
+func _on_water_entered(body):
+	if body == self:
+		$Splash.volume_db = (1 - (velocity.y / MAX_AIR_SPEED)) * -6
+		$Splash.play()
+		
+		gravity *= 0.2
+		velocity *= 0.2
+		drag *= 2
+		jump_force *= 0.2
+		flap_force *= 0.5
+		
+		var lowpass = AudioEffectLowPassFilter.new()
+		lowpass.cutoff_hz = 500
+		
+		var reverb = AudioEffectReverb.new()
+		reverb.room_size = 0.3
+		reverb.damping = 0.9
+		
+		AudioServer.add_bus_effect(AudioServer.get_bus_index("Master"), reverb)
+		AudioServer.add_bus_effect(AudioServer.get_bus_index("Master"), lowpass)
+		
+func _on_water_exited(body):
+	if body == self:
+		gravity /= 0.2
+		velocity /= 0.5
+		drag /= 2
+		jump_force /= 0.2
+		flap_force /= 0.5
+		
+		AudioServer.remove_bus_effect(AudioServer.get_bus_index("Master"), 0)
+		AudioServer.remove_bus_effect(AudioServer.get_bus_index("Master"), 0)
+		
+		$Splash.volume_db = (1 - (velocity.y / MAX_AIR_SPEED)) * -6
+		$Splash.play()

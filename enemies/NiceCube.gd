@@ -102,6 +102,7 @@ func slide():
 # Called by become_angry animation
 func set_on_fire():
 	on_fire = true
+	$Light2D.visible = true
 
 func attacked():
 	if animation_player.current_animation == "become_angry" and not on_fire:

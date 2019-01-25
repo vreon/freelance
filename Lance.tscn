@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Lance.gd" type="Script" id=1]
 [ext_resource path="res://sprites/spark.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://sounds/attack.wav" type="AudioStream" id=12]
 [ext_resource path="res://sounds/deflect.wav" type="AudioStream" id=13]
 [ext_resource path="res://sounds/door.wav" type="AudioStream" id=14]
+[ext_resource path="res://sounds/splash.wav" type="AudioStream" id=15]
 
 [sub_resource type="Gradient" id=1]
 
@@ -176,6 +177,11 @@ bus = "SFX"
 [node name="Door" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 14 )
 volume_db = -6.0
+bus = "SFX"
+
+[node name="Splash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 15 )
+volume_db = -2.0
 bus = "SFX"
 
 [node name="Camera2D" type="Camera2D" parent="."]

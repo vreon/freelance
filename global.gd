@@ -28,10 +28,18 @@ func _unhandled_input(event):
 				12: # D-Pad up
 					OS.window_fullscreen = !OS.window_fullscreen
 				13: # D-Pad down
-					var music_idx = AudioServer.get_bus_index("Music")
-					var mute = not AudioServer.is_bus_mute(music_idx)
-					AudioServer.set_bus_mute(music_idx, mute)
-					print("Music ", "off" if mute else "on")
+					var music_bus_idx = AudioServer.get_bus_index("Music")
+					var volume_db = floor(AudioServer.get_bus_volume_db(music_bus_idx))
+
+					if volume_db == 0:
+						volume_db = -10
+					elif volume_db <= -10 and volume_db > -1000:
+						volume_db = -1000
+					else:
+						volume_db = 0
+					
+					AudioServer.set_bus_volume_db(music_bus_idx, volume_db)
+					print("Music volume: %d dB" % volume_db)
 				14: # D-Pad left
 					transition_to_scene("res://levels/DebugRoom.tscn", null, "rect")
 				15:

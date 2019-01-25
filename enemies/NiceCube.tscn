@@ -1,13 +1,14 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://enemies/NiceCube.gd" type="Script" id=1]
-[ext_resource path="res://sprites/nicecube.png" type="Texture" id=2]
-[ext_resource path="res://sounds/hop.wav" type="AudioStream" id=3]
-[ext_resource path="res://sounds/slide.wav" type="AudioStream" id=4]
-[ext_resource path="res://sounds/flamedash.wav" type="AudioStream" id=5]
-[ext_resource path="res://sounds/flamejump.wav" type="AudioStream" id=6]
-[ext_resource path="res://sounds/jostle.wav" type="AudioStream" id=7]
-[ext_resource path="res://sounds/burn.wav" type="AudioStream" id=8]
+[ext_resource path="res://sprites/radial.png" type="Texture" id=2]
+[ext_resource path="res://sprites/nicecube.png" type="Texture" id=3]
+[ext_resource path="res://sounds/hop.wav" type="AudioStream" id=4]
+[ext_resource path="res://sounds/slide.wav" type="AudioStream" id=5]
+[ext_resource path="res://sounds/flamedash.wav" type="AudioStream" id=6]
+[ext_resource path="res://sounds/flamejump.wav" type="AudioStream" id=7]
+[ext_resource path="res://sounds/jostle.wav" type="AudioStream" id=8]
+[ext_resource path="res://sounds/burn.wav" type="AudioStream" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -43,10 +44,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.7, 1.1, 1.2, 1.3, 1.35, 1.4, 1.45, 1.5, 1.55, 1.6, 1.65, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.7, 1.1, 1.25, 1.35, 1.5, 1.55, 1.6, 1.65, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Rect2( 32, 0, 32, 32 ), Rect2( 64, 0, 32, 32 ), Rect2( 98, 0, 32, 32 ), Rect2( 64, 0, 32, 32 ), Rect2( 98, 0, 32, 32 ), Rect2( 128, 0, 32, 32 ), Rect2( 162, 0, 32, 32 ), Rect2( 128, 0, 32, 32 ), Rect2( 162, 0, 32, 32 ), Rect2( 192, 0, 32, 32 ), Rect2( 224, 0, 32, 32 ), Rect2( 192, 0, 32, 32 ), Rect2( 224, 0, 32, 32 ), Rect2( 192, 0, 32, 32 ), Rect2( 224, 0, 32, 32 ), Rect2( 192, 0, 32, 32 ), Rect2( 224, 0, 32, 32 ), Rect2( 192, 0, 32, 32 ), Rect2( 224, 0, 32, 32 ), Rect2( 192, 0, 32, 32 ), Rect2( 224, 0, 32, 32 ), Rect2( 256, 0, 32, 32 ), Rect2( 288, 0, 32, 32 ), Rect2( 256, 0, 32, 32 ), Rect2( 288, 0, 32, 32 ), Rect2( 256, 0, 32, 32 ) ]
+"values": [ Rect2( 32, 0, 32, 32 ), Rect2( 64, 0, 32, 32 ), Rect2( 98, 0, 32, 32 ), Rect2( 98, 0, 32, 32 ), Rect2( 162, 0, 32, 32 ), Rect2( 162, 0, 32, 32 ), Rect2( 192, 0, 32, 32 ), Rect2( 224, 0, 32, 32 ), Rect2( 192, 0, 32, 32 ), Rect2( 224, 0, 32, 32 ), Rect2( 192, 0, 32, 32 ), Rect2( 224, 0, 32, 32 ), Rect2( 192, 0, 32, 32 ), Rect2( 224, 0, 32, 32 ), Rect2( 192, 0, 32, 32 ), Rect2( 224, 0, 32, 32 ), Rect2( 192, 0, 32, 32 ), Rect2( 224, 0, 32, 32 ), Rect2( 256, 0, 32, 32 ), Rect2( 288, 0, 32, 32 ), Rect2( 256, 0, 32, 32 ), Rect2( 288, 0, 32, 32 ), Rect2( 256, 0, 32, 32 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("FlameDash:playing")
@@ -98,48 +99,54 @@ collision_layer = 4
 collision_mask = 3
 script = ExtResource( 1 )
 
+[node name="Light2D" type="Light2D" parent="."]
+visible = false
+texture = ExtResource( 2 )
+texture_scale = 0.3
+color = Color( 1, 0.470588, 0, 1 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, 2 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 32, 32 )
+region_rect = Rect2( 32, 0, 32, 32 )
 
 [node name="Hop" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 3 )
-volume_db = -10.0
-max_distance = 150.0
-bus = "SFX"
-
-[node name="Slide" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
 volume_db = -10.0
 max_distance = 150.0
 bus = "SFX"
 
-[node name="FlameDash" type="AudioStreamPlayer2D" parent="."]
+[node name="Slide" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
+volume_db = -10.0
+max_distance = 150.0
+bus = "SFX"
+
+[node name="FlameDash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
 volume_db = -9.0
 max_distance = 500.0
 bus = "SFX"
 
 [node name="FlameJump" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 6 )
+stream = ExtResource( 7 )
 volume_db = -10.0
 max_distance = 500.0
 bus = "SFX"
 
 [node name="Jostle" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 7 )
+stream = ExtResource( 8 )
 volume_db = -10.0
 max_distance = 150.0
 bus = "SFX"
 
 [node name="Burn" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 8 )
+stream = ExtResource( 9 )
 volume_db = -15.0
 max_distance = 100.0
 bus = "SFX"
