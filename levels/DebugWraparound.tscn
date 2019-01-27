@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://levels/DebugWraparound.gd" type="Script" id=1]
+[ext_resource path="res://tilesets/debug/debug.tres" type="TileSet" id=2]
+[ext_resource path="res://levels/Lava.gd" type="Script" id=3]
+[ext_resource path="res://backgrounds/grid/grid.tscn" type="PackedScene" id=4]
+[ext_resource path="res://utilities/AutoCameraBounds.gd" type="Script" id=5]
+[ext_resource path="res://utilities/Door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Lance.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ui/GUI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://WraparoundVolume.gd" type="Script" id=9]
+[ext_resource path="res://enemies/Tilter.tscn" type="PackedScene" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+extents = Vector2( 8, 88 )
+
+[node name="DebugWraparound" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -1, 10, 0, -65536, 10, 0, -65535, 10, 0, -65534, 10, 0, -65533, 10, 0, -65532, 10, 0, -65531, 10, 0, -65530, 10, 0, -65529, 10, 0, -65528, 10, 0, -65527, 10, 0, -65526, 10, 0, -65525, 10, 0, -65524, 10, 0, -65523, 10, 0, -65522, 10, 0, -65521, 10, 0, -65520, 10, 0, -65519, 10, 0, -65518, 10, 0, -65517, 10, 0, -65516, 10, 0, -65515, 10, 0, -65514, 10, 0, -65513, 10, 0, -65512, 10, 0, -65511, 10, 0, 196618, 10, 0, 196619, 10, 0, 196620, 10, 0, 196621, 10, 0, 196622, 10, 0, 458755, 10, 0, 458756, 10, 0, 458757, 10, 0, 458758, 10, 0, 458759, 10, 0, 458769, 10, 0, 458770, 10, 0, 458771, 10, 0, 458772, 10, 0, 458773, 10, 0, 786431, 10, 0, 720903, 10, 0, 720904, 10, 0, 720905, 10, 0, 720906, 10, 0, 720907, 10, 0, 720908, 10, 0, 720909, 10, 0, 720910, 10, 0, 720911, 10, 0, 720912, 10, 0, 720913, 10, 0, 720921, 10, 0, 851967, 10, 0, 786432, 10, 0, 786433, 10, 0, 786434, 10, 0, 786435, 10, 0, 786436, 10, 0, 786437, 10, 0, 786438, 10, 0, 786439, 10, 0, 786440, 10, 0, 786441, 10, 0, 786442, 10, 0, 786443, 10, 0, 786444, 10, 0, 786445, 10, 0, 786446, 10, 0, 786447, 10, 0, 786448, 10, 0, 786449, 10, 0, 786450, 10, 0, 786451, 10, 0, 786452, 10, 0, 786453, 10, 0, 786454, 10, 0, 786455, 10, 0, 786456, 10, 0, 786457, 10, 0, 917503, 10, 0, 851968, 10, 0, 851969, 10, 0, 851970, 10, 0, 851971, 10, 0, 851972, 10, 0, 851973, 10, 0, 851974, 10, 0, 851975, 10, 0, 851976, 10, 0, 851977, 10, 0, 851978, 10, 0, 851979, 10, 0, 851980, 10, 0, 851981, 10, 0, 851982, 10, 0, 851983, 10, 0, 851984, 10, 0, 851985, 10, 0, 851986, 10, 0, 851987, 10, 0, 851988, 10, 0, 851989, 10, 0, 851990, 10, 0, 851991, 10, 0, 851992, 10, 0, 851993, 10, 0 )
+
+[node name="Lava" type="TileMap" parent="."]
+modulate = Color( 1.2, 0, 0, 1 )
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 720896, 10, 0, 720897, 10, 0, 720898, 10, 0, 720899, 10, 0, 720900, 10, 0, 720901, 10, 0, 720902, 10, 0, 720914, 10, 0, 720915, 10, 0, 720916, 10, 0, 720917, 10, 0, 720918, 10, 0, 720919, 10, 0, 720920, 10, 0 )
+script = ExtResource( 3 )
+
+[node name="GridBackground" parent="." instance=ExtResource( 4 )]
+
+[node name="AutoCameraBounds" type="Node" parent="."]
+script = ExtResource( 5 )
+tile_map = NodePath("../TileMap")
+camera_man = NodePath("../Lance")
+
+[node name="DebugDoor" parent="." instance=ExtResource( 6 )]
+position = Vector2( 192, 16 )
+
+[node name="Lance" parent="." instance=ExtResource( 7 )]
+position = Vector2( 168, 32 )
+
+[node name="GUI" parent="." instance=ExtResource( 8 )]
+
+[node name="WraparoundVolume" type="Area2D" parent="."]
+position = Vector2( 408, 88 )
+collision_layer = 0
+collision_mask = 6
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WraparoundVolume"]
+shape = SubResource( 1 )
+
+[node name="WraparoundVolume2" type="Area2D" parent="."]
+position = Vector2( -8, 88 )
+collision_layer = 0
+collision_mask = 6
+script = ExtResource( 9 )
+offset = 400
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WraparoundVolume2"]
+shape = SubResource( 1 )
+
+[node name="Tilter" parent="." instance=ExtResource( 10 )]
+position = Vector2( 312, 64 )
+
+[node name="Tilter2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 80, 64 )
+
+[node name="Tilter3" parent="." instance=ExtResource( 10 )]
+position = Vector2( 200, 136 )
+
+[connection signal="health_changed" from="Lance" to="GUI" method="_on_Lance_health_changed"]
+[connection signal="body_entered" from="WraparoundVolume" to="WraparoundVolume" method="_on_body_entered"]
+[connection signal="body_entered" from="WraparoundVolume2" to="WraparoundVolume2" method="_on_body_entered"]
