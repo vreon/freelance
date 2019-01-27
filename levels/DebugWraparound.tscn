@@ -48,14 +48,13 @@ position = Vector2( 176, 32 )
 [node name="GUI" parent="." instance=ExtResource( 8 )]
 
 [node name="WraparoundVolume" type="Area2D" parent="."]
-position = Vector2( 200, 96 )
+position = Vector2( 200, 88 )
 collision_layer = 0
 collision_mask = 6
 script = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WraparoundVolume"]
 visible = false
-position = Vector2( 0, -8 )
 shape = SubResource( 1 )
 
 [node name="Tilter" parent="." instance=ExtResource( 10 )]
