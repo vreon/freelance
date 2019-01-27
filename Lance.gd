@@ -21,6 +21,7 @@ const MAX_AIR_SPEED = 200
 const MAX_GROUND_SPEED = 200
 const HITSTUN_SPEED = 150
 const FLAP_DECELERATE_FACTOR = 1.0
+const SKID_FACTOR = 0.9
 
 var gravity = Vector2(0, 300)
 var drag = AIR_FRICTION
@@ -40,7 +41,7 @@ const WALL_BOUNCE_FACTOR = 0.8
 # TODO ideas
 # Don't allow AIR_MOVE_FORCE until the first flap
 # Variable jump height (from ground) based on button hold (like Mario)
-# GROUND_FRICTION = 0.01 if you're facing forward
+
 
 # Various states
 var on_ceiling = false
@@ -147,6 +148,9 @@ func _physics_process(delta):
 		velocity.x *= (1 - GROUND_FRICTION)
 	else:
 		velocity *= (1 - drag)
+		
+	if on_floor and sign(velocity.x) != facing_dir:
+		velocity.x *= SKID_FACTOR
 
 	# ... gravity
 	velocity += gravity * delta
