@@ -1,13 +1,60 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://levels/GrasslandTest2.gd" type="Script" id=1]
 [ext_resource path="res://tilesets/grassland/grassland.tres" type="TileSet" id=2]
 [ext_resource path="res://utilities/Door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Lance.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ui/GUI.tscn" type="PackedScene" id=5]
-[ext_resource path="res://utilities/AutoCameraBounds.gd" type="Script" id=6]
-[ext_resource path="res://backgrounds/bg.png" type="Texture" id=7]
-[ext_resource path="res://enemies/Tilter.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ui/textures/scroll_alert.png" type="Texture" id=6]
+[ext_resource path="res://sprites/radial.png" type="Texture" id=7]
+[ext_resource path="res://sounds/alert.wav" type="AudioStream" id=8]
+[ext_resource path="res://ui/fonts/6x10_o2.tres" type="BitmapFont" id=9]
+[ext_resource path="res://utilities/AutoCameraBounds.gd" type="Script" id=10]
+[ext_resource path="res://backgrounds/bg.png" type="Texture" id=11]
+[ext_resource path="res://enemies/Tilter.tscn" type="PackedScene" id=12]
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "go"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true, false ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="Curve2D" id=1]
+
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 880, 0, 0, 0, 0, 0, 0 )
+}
 
 [node name="GrasslandTest2" type="Node2D"]
 script = ExtResource( 1 )
@@ -26,8 +73,32 @@ position = Vector2( 20, 1036 )
 
 [node name="GUI" parent="." instance=ExtResource( 5 )]
 
+[node name="scroll_alert" type="Sprite" parent="GUI"]
+position = Vector2( 200, 170 )
+texture = ExtResource( 6 )
+
+[node name="Light2D" type="Light2D" parent="GUI/scroll_alert"]
+texture = ExtResource( 7 )
+texture_scale = 0.49
+color = Color( 0, 0.670588, 1, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/scroll_alert"]
+anims/go = SubResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GUI/scroll_alert"]
+stream = ExtResource( 8 )
+volume_db = -17.0
+
+[node name="Label" type="Label" parent="GUI/scroll_alert"]
+margin_left = -8.0
+margin_top = -35.0
+margin_right = 32.0
+margin_bottom = -21.0
+custom_fonts/font = ExtResource( 9 )
+text = "GO"
+
 [node name="AutoCameraBounds" type="Node" parent="."]
-script = ExtResource( 6 )
+script = ExtResource( 10 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -35,23 +106,36 @@ script = ExtResource( 6 )
 motion_scale = Vector2( 0.2, 0 )
 
 [node name="bg" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 147.75, 0 )
+position = Vector2( 315, 112 )
 scale = Vector2( 2.79867, 1 )
-texture = ExtResource( 7 )
+texture = ExtResource( 11 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Tilter" parent="." instance=ExtResource( 8 )]
+[node name="Tilter" parent="." instance=ExtResource( 12 )]
 position = Vector2( 320, 816 )
 
-[node name="Tilter2" parent="." instance=ExtResource( 8 )]
+[node name="Tilter2" parent="." instance=ExtResource( 12 )]
 position = Vector2( 64, 752 )
 
-[node name="Tilter3" parent="." instance=ExtResource( 8 )]
+[node name="Tilter3" parent="." instance=ExtResource( 12 )]
 position = Vector2( 304, 64 )
 
-[node name="Tilter4" parent="." instance=ExtResource( 8 )]
+[node name="Tilter4" parent="." instance=ExtResource( 12 )]
 position = Vector2( 32, 464 )
+
+[node name="Path2D" type="Path2D" parent="."]
+visible = false
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 0, 880 )
+rotate = false
+loop = false
+
+[node name="Camera2D" type="Camera2D" parent="Path2D/PathFollow2D"]
+anchor_mode = 0
+current = true
 
 [connection signal="health_changed" from="Lance" to="GUI" method="_on_Lance_health_changed"]
