@@ -13,7 +13,7 @@ signal health_changed
 # const FLAP_DECELERATE_FACTOR = 0.5
 
 # Joust-like
-const GROUND_MOVE_FORCE = 2
+const GROUND_MOVE_FORCE = 4
 const AIR_MOVE_FORCE = 3
 const AIR_FRICTION = 0.001
 const GROUND_FRICTION = 0.03
@@ -21,7 +21,7 @@ const MAX_AIR_SPEED = 200
 const MAX_GROUND_SPEED = 200
 const HITSTUN_SPEED = 150
 const FLAP_DECELERATE_FACTOR = 1.0
-const SKID_FACTOR = 0.9
+const SKID_FACTOR = 0.95
 
 var gravity = Vector2(0, 300)
 var drag = AIR_FRICTION
