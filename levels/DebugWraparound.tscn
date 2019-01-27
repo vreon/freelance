@@ -13,7 +13,7 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 
-extents = Vector2( 8, 88 )
+extents = Vector2( 200, 104 )
 
 [node name="DebugWraparound" type="Node2D"]
 script = ExtResource( 1 )
@@ -43,38 +43,29 @@ camera_man = NodePath("../Lance")
 position = Vector2( 192, 16 )
 
 [node name="Lance" parent="." instance=ExtResource( 7 )]
-position = Vector2( 168, 32 )
+position = Vector2( 176, 32 )
 
 [node name="GUI" parent="." instance=ExtResource( 8 )]
 
 [node name="WraparoundVolume" type="Area2D" parent="."]
-position = Vector2( 408, 88 )
+position = Vector2( 200, 96 )
 collision_layer = 0
 collision_mask = 6
 script = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WraparoundVolume"]
-shape = SubResource( 1 )
-
-[node name="WraparoundVolume2" type="Area2D" parent="."]
-position = Vector2( -8, 88 )
-collision_layer = 0
-collision_mask = 6
-script = ExtResource( 9 )
-offset = 400
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WraparoundVolume2"]
+visible = false
+position = Vector2( 0, -8 )
 shape = SubResource( 1 )
 
 [node name="Tilter" parent="." instance=ExtResource( 10 )]
-position = Vector2( 312, 64 )
+position = Vector2( 288, 80 )
 
 [node name="Tilter2" parent="." instance=ExtResource( 10 )]
-position = Vector2( 80, 64 )
+position = Vector2( 112, 80 )
 
 [node name="Tilter3" parent="." instance=ExtResource( 10 )]
 position = Vector2( 200, 136 )
 
 [connection signal="health_changed" from="Lance" to="GUI" method="_on_Lance_health_changed"]
-[connection signal="body_entered" from="WraparoundVolume" to="WraparoundVolume" method="_on_body_entered"]
-[connection signal="body_entered" from="WraparoundVolume2" to="WraparoundVolume2" method="_on_body_entered"]
+[connection signal="body_exited" from="WraparoundVolume" to="WraparoundVolume" method="_on_WraparoundVolume_body_exited"]
