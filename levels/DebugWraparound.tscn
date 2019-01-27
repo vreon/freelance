@@ -8,8 +8,8 @@
 [ext_resource path="res://utilities/Door.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Lance.tscn" type="PackedScene" id=7]
 [ext_resource path="res://ui/GUI.tscn" type="PackedScene" id=8]
-[ext_resource path="res://utilities/WrapAroundVolume.gd" type="Script" id=9]
-[ext_resource path="res://enemies/Tilter.tscn" type="PackedScene" id=10]
+[ext_resource path="res://enemies/Tilter.tscn" type="PackedScene" id=9]
+[ext_resource path="res://utilities/WrapAroundArea2D.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -47,24 +47,21 @@ position = Vector2( 176, 32 )
 
 [node name="GUI" parent="." instance=ExtResource( 8 )]
 
-[node name="WrapAroundVolume" type="Area2D" parent="."]
-position = Vector2( 200, 88 )
-collision_layer = 0
-collision_mask = 6
-script = ExtResource( 9 )
+[node name="Tilter" parent="." instance=ExtResource( 9 )]
+position = Vector2( 288, 80 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WrapAroundVolume"]
+[node name="Tilter2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 112, 80 )
+
+[node name="Tilter3" parent="." instance=ExtResource( 9 )]
+position = Vector2( 200, 136 )
+
+[node name="WrapAroundArea2D" type="Area2D" parent="."]
+position = Vector2( 200, 88 )
+script = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WrapAroundArea2D"]
 visible = false
 shape = SubResource( 1 )
 
-[node name="Tilter" parent="." instance=ExtResource( 10 )]
-position = Vector2( 288, 80 )
-
-[node name="Tilter2" parent="." instance=ExtResource( 10 )]
-position = Vector2( 112, 80 )
-
-[node name="Tilter3" parent="." instance=ExtResource( 10 )]
-position = Vector2( 200, 136 )
-
 [connection signal="health_changed" from="Lance" to="GUI" method="_on_Lance_health_changed"]
-[connection signal="body_exited" from="WrapAroundVolume" to="WrapAroundVolume" method="_on_WraparoundVolume_body_exited"]

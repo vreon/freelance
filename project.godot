@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "AutoCameraBounds",
 "language": "GDScript",
 "path": "res://utilities/AutoCameraBounds.gd"
+}, {
+"base": "Area2D",
+"class": "WrapAroundArea2D",
+"language": "GDScript",
+"path": "res://utilities/WrapAroundArea2D.gd"
 } ]
 _global_script_class_icons={
-"AutoCameraBounds": ""
+"AutoCameraBounds": "",
+"WrapAroundArea2D": ""
 }
 
 [application]
