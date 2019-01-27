@@ -81,6 +81,33 @@ func _physics_process(delta):
 	on_floor = is_on_floor()
 	on_wall = is_on_wall()
 	
+	if on_floor:
+		if !was_on_floor:
+			if abs(velocity.y) >= FLOOR_BOUNCE_SPEED:
+				$Hit.play()
+				velocity.y *= -FLOOR_BOUNCE_FACTOR
+			else:
+				$Land.play()
+		else:
+			velocity.y = 0
+			
+	if on_ceiling:
+		if !was_on_ceiling:
+			if abs(velocity.y) >= FLOOR_BOUNCE_SPEED:
+				$Hit.play()
+				velocity.y *= -FLOOR_BOUNCE_FACTOR
+			else:
+				$Land.play()
+		else:
+			velocity.y = 0
+			
+	if !was_on_wall and on_wall:
+		if abs(velocity.x) > WALL_BOUNCE_SPEED:
+			$Hit.play()
+			velocity.x *= -WALL_BOUNCE_FACTOR
+	elif on_wall:
+		velocity.x = 0
+	
 	# Capture the player's intent
 	
 	var jump_speed = 0
@@ -260,40 +287,6 @@ func handle_collision(collider, position):
 				spark.modulate = Color(1.0, 1.0, 1.0, 0.5)
 				get_parent().add_child(spark)
 				spark.position = position
-	
-	if not damage_result:
-		# Hit a bog-standard collider.
-		# Find out how fast we were going, and whether
-		# we need to bounce or what.
-		
-		# TODO: DRY floor and ceiling branches
-		
-		if on_floor:
-			if !was_on_floor:
-				if abs(velocity.y) >= FLOOR_BOUNCE_SPEED:
-					$Hit.play()
-					velocity.y *= -FLOOR_BOUNCE_FACTOR
-				else:
-					$Land.play()
-			else:
-				velocity.y = 0
-				
-		if on_ceiling:
-			if !was_on_ceiling:
-				if abs(velocity.y) >= FLOOR_BOUNCE_SPEED:
-					$Hit.play()
-					velocity.y *= -FLOOR_BOUNCE_FACTOR
-				else:
-					$Land.play()
-			else:
-				velocity.y = 0
-				
-		if !was_on_wall and on_wall:
-			if abs(velocity.x) > WALL_BOUNCE_SPEED:
-				$Hit.play()
-				velocity.x *= -WALL_BOUNCE_FACTOR
-		elif on_wall:
-			velocity.x = 0
 
 func play_anim(anim_name):
 	if anim_player.is_playing() and anim_player.current_animation == anim_name:
