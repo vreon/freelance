@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://levels/GrasslandTest2.gd" type="Script" id=1]
+[ext_resource path="res://levels/grassland/GrasslandTest2.gd" type="Script" id=1]
 [ext_resource path="res://tilesets/grassland/grassland.tres" type="TileSet" id=2]
 [ext_resource path="res://utilities/Door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Lance.tscn" type="PackedScene" id=4]
@@ -13,6 +13,7 @@
 [ext_resource path="res://backgrounds/bg.png" type="Texture" id=11]
 [ext_resource path="res://enemies/Tilter.tscn" type="PackedScene" id=12]
 [ext_resource path="res://enemies/Hurtbox.gd" type="Script" id=13]
+
 
 [sub_resource type="Animation" id=1]
 

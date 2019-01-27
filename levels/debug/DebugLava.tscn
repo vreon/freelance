@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://levels/DebugLava.gd" type="Script" id=1]
+[ext_resource path="res://levels/debug/DebugLava.gd" type="Script" id=1]
 [ext_resource path="res://tilesets/debug/debug.tres" type="TileSet" id=2]
 [ext_resource path="res://levels/Lava.gd" type="Script" id=3]
 [ext_resource path="res://backgrounds/grid/grid.tscn" type="PackedScene" id=4]
@@ -8,6 +8,7 @@
 [ext_resource path="res://utilities/Door.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Lance.tscn" type="PackedScene" id=7]
 [ext_resource path="res://ui/GUI.tscn" type="PackedScene" id=8]
+
 
 [node name="DebugLava" type="Node2D"]
 script = ExtResource( 1 )

@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://levels/DebugWraparound.gd" type="Script" id=1]
+[ext_resource path="res://levels/debug/DebugWraparound.gd" type="Script" id=1]
 [ext_resource path="res://tilesets/debug/debug.tres" type="TileSet" id=2]
 [ext_resource path="res://backgrounds/grid/grid.tscn" type="PackedScene" id=3]
 [ext_resource path="res://utilities/AutoCameraBounds.gd" type="Script" id=4]
@@ -9,6 +9,7 @@
 [ext_resource path="res://ui/GUI.tscn" type="PackedScene" id=7]
 [ext_resource path="res://enemies/Tilter.tscn" type="PackedScene" id=8]
 [ext_resource path="res://utilities/WrapAroundArea2D.gd" type="Script" id=9]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 

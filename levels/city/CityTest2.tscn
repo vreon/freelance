@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://levels/CityTest2.gd" type="Script" id=1]
+[ext_resource path="res://levels/city/CityTest2.gd" type="Script" id=1]
 [ext_resource path="res://backgrounds/city/CityBackground.tscn" type="PackedScene" id=2]
 [ext_resource path="res://tilesets/city/city.tres" type="TileSet" id=3]
 [ext_resource path="res://utilities/Door.tscn" type="PackedScene" id=4]
@@ -22,12 +22,13 @@ tile_data = PoolIntArray( -1, 2, 0, -65536, 2, 0, -65535, 2, 0, -65534, 2, 0, -6
 
 [node name="Door" parent="." instance=ExtResource( 4 )]
 position = Vector2( 320, 48 )
-destination_level = "CityTest"
+destination_level = "city/CityTest"
 destination_position = "SpawnFoo"
 
 [node name="Ignorb" parent="." instance=ExtResource( 5 )]
 position = Vector2( 176, 96 )
 repel_distance = 105.0
+show_repel_radius = true
 
 [node name="Lance" parent="." instance=ExtResource( 6 )]
 position = Vector2( 40, 119 )

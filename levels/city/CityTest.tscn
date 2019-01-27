@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://levels/CityTest.gd" type="Script" id=1]
+[ext_resource path="res://levels/city/CityTest.gd" type="Script" id=1]
 [ext_resource path="res://tilesets/city/city.tres" type="TileSet" id=2]
 [ext_resource path="res://utilities/Door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://enemies/NiceCube.tscn" type="PackedScene" id=4]
@@ -25,7 +25,7 @@ position = Vector2( -32, 96 )
 
 [node name="Door2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 576, 400 )
-destination_level = "CityTest2"
+destination_level = "city/CityTest2"
 
 [node name="NiceCube" parent="." instance=ExtResource( 4 )]
 position = Vector2( 138, 154 )

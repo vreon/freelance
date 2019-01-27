@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://levels/DebugRoom.gd" type="Script" id=1]
+[ext_resource path="res://levels/debug/DebugRoom.gd" type="Script" id=1]
 [ext_resource path="res://tilesets/debug/debug.tres" type="TileSet" id=2]
 [ext_resource path="res://backgrounds/grid/grid.tscn" type="PackedScene" id=3]
 [ext_resource path="res://utilities/Door.tscn" type="PackedScene" id=4]
@@ -30,7 +30,7 @@ destination_position = "SpawnFar"
 
 [node name="NoFlyDoor" parent="." instance=ExtResource( 4 )]
 position = Vector2( 64, 96 )
-destination_level = "DebugNoFly"
+destination_level = "debug/DebugNoFly"
 
 [node name="BossTestDoor" parent="." instance=ExtResource( 4 )]
 position = Vector2( 96, 176 )
@@ -38,22 +38,22 @@ destination_level = "BossTest"
 
 [node name="CityTestDoor" parent="." instance=ExtResource( 4 )]
 position = Vector2( 64, 176 )
-destination_level = "CityTest"
+destination_level = "city/CityTest"
 
 [node name="GrasslandDoor" parent="." instance=ExtResource( 4 )]
 position = Vector2( 32, 176 )
-destination_level = "GrasslandTest"
+destination_level = "grassland/GrasslandTest"
 
 [node name="DebugDoor" parent="." instance=ExtResource( 4 )]
 position = Vector2( 624, 176 )
 
 [node name="DebugDoor4" parent="." instance=ExtResource( 4 )]
 position = Vector2( 32, 96 )
-destination_level = "DebugLava"
+destination_level = "debug/DebugLava"
 
 [node name="DebugDoor5" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, 96 )
-destination_level = "DebugWraparound"
+destination_level = "debug/DebugWraparound"
 
 [node name="DummyAttackable" parent="." instance=ExtResource( 5 )]
 modulate = Color( 0.278431, 0.768627, 0.0196078, 1 )

@@ -1,7 +1,7 @@
 extends Node2D
 
 #warning-ignore:unused_class_variable
-export var destination_level = "DebugRoom"
+export var destination_level = "debug/DebugRoom"
 
 #warning-ignore:unused_class_variable
 export var destination_position = "Spawn"

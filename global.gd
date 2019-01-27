@@ -41,7 +41,7 @@ func _unhandled_input(event):
 					AudioServer.set_bus_volume_db(music_bus_idx, volume_db)
 					print("Music volume: %d dB" % volume_db)
 				14: # D-Pad left
-					transition_to_scene("res://levels/DebugRoom.tscn", null, "rect")
+					transition_to_scene("res://levels/debug/DebugRoom.tscn", null, "rect")
 				15:
 					global.player_health = 100
 					get_tree().get_nodes_in_group("player")[0].emit_signal("health_changed", 100)
