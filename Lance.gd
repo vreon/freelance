@@ -250,10 +250,9 @@ func hurt(amount, type=Hurtbox.DamageType.PHYSICAL, origin=null, force=0):
 	if attacking and type == Hurtbox.DamageType.PHYSICAL:
 		return Hurtbox.DamageResult.IGNORED
 	
+	$Ouch.play()
+	
 	match type:
-		Hurtbox.DamageType.PHYSICAL, Hurtbox.DamageType.BURN, Hurtbox.DamageType.SHOCK:
-			$Ouch.play()
-			continue
 		Hurtbox.DamageType.BURN:
 			$Burned.play()
 		Hurtbox.DamageType.SHOCK:
