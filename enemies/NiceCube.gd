@@ -102,6 +102,8 @@ func slide():
 # Called by become_angry animation
 func set_on_fire():
 	on_fire = true
+	$Hurtbox.damage_type = Hurtbox.DamageType.BURN
+	$Hurtbox.damage_amount = 30
 	$Light2D.visible = true
 
 func hurt(amount, _type=Hurtbox.DamageType.PHYSICAL, _origin=null, _force=0):
