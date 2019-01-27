@@ -15,12 +15,18 @@ _global_script_classes=[ {
 "path": "res://utilities/AutoCameraBounds.gd"
 }, {
 "base": "Area2D",
+"class": "Hurtbox",
+"language": "GDScript",
+"path": "res://enemies/Hurtbox.gd"
+}, {
+"base": "Area2D",
 "class": "WrapAroundArea2D",
 "language": "GDScript",
 "path": "res://utilities/WrapAroundArea2D.gd"
 } ]
 _global_script_class_icons={
 "AutoCameraBounds": "",
+"Hurtbox": "",
 "WrapAroundArea2D": ""
 }
 
@@ -123,6 +129,10 @@ move_up={
 2d_physics/layer_1="World"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemy"
+2d_physics/layer_17="Player Hitbox"
+2d_physics/layer_18="Enemy Hitbox"
+2d_physics/layer_19="Player Hurtbox"
+2d_physics/layer_20="Enemy Hurtbox"
 
 [rendering]
 

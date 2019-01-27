@@ -207,13 +207,20 @@ position = Vector2( 0, -3 )
 points = PoolVector2Array( 0, 0, 0, 50 )
 width = 2.0
 default_color = Color( 1, 0.4, 0.4, 1 )
-texture_mode = 114559328
+texture_mode = 1065353216
 
 [node name="DebugVelocityLine2" type="Line2D" parent="DebugStuff"]
 position = Vector2( 0, -3 )
 points = PoolVector2Array( 0, 0, 0, 50 )
 width = 2.0
-texture_mode = 114559328
+texture_mode = 0
+
+[node name="HitstunLine" type="Line2D" parent="DebugStuff"]
+position = Vector2( 0, -3 )
+points = PoolVector2Array( 0, 0, 0, 50 )
+width = 2.0
+default_color = Color( 0.827451, 1, 0, 1 )
+texture_mode = 0
 
 [node name="DebugVelocityLabel" type="Label" parent="DebugStuff"]
 margin_left = -22.0

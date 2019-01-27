@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://enemies/NiceCube.gd" type="Script" id=1]
 [ext_resource path="res://sprites/radial.png" type="Texture" id=2]
@@ -9,10 +9,11 @@
 [ext_resource path="res://sounds/flamejump.wav" type="AudioStream" id=7]
 [ext_resource path="res://sounds/jostle.wav" type="AudioStream" id=8]
 [ext_resource path="res://sounds/burn.wav" type="AudioStream" id=9]
+[ext_resource path="res://enemies/Hurtbox.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 
-extents = Vector2( 6, 6 )
+extents = Vector2( 5, 5 )
 
 [sub_resource type="Animation" id=2]
 
@@ -92,6 +93,10 @@ tracks/0/keys = {
 "values": [ Rect2( 0, 0, 32, 32 ) ]
 }
 
+[sub_resource type="RectangleShape2D" id=5]
+
+extents = Vector2( 6, 6 )
+
 [node name="NiceCube" type="KinematicBody2D" groups=[
 "enemy",
 ]]
@@ -106,14 +111,13 @@ texture_scale = 0.3
 color = Color( 1, 0.470588, 0, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, 2 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 32, 0, 32, 32 )
+region_rect = Rect2( 0, 0, 32, 32 )
 
 [node name="Hop" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
@@ -155,4 +159,15 @@ bus = "SFX"
 anims/angry = SubResource( 2 )
 anims/become_angry = SubResource( 3 )
 anims/idle = SubResource( 4 )
+
+[node name="Hurtbox" type="Area2D" parent="."]
+visible = false
+collision_layer = 524288
+collision_mask = 2
+script = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+visible = false
+position = Vector2( 0, 2 )
+shape = SubResource( 5 )
 

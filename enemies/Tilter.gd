@@ -14,6 +14,7 @@ var accel_direction = Vector2(0, 0)
 var direction_timer = 0
 
 onready var sprite = $Sprite
+onready var hurtbox = $Hurtbox
 onready var player = $"../Lance"
 onready var anim = $AnimationPlayer
 
@@ -25,6 +26,7 @@ func _ready():
 	
 func _process(delta):
 	sprite.flip_h = accel_direction.x > 0
+	hurtbox.scale = Vector2(-1 if sprite.flip_h else 1, 1)
 
 	$DebugStuff.visible = global.debug_overlays
 	if global.debug_overlays:
@@ -65,10 +67,3 @@ func _physics_process(delta):
 
 func randvec2():
 	return Vector2(0, 1.0).rotated(randf() * 2 * PI)
-
-func attacked():
-	return "attacked"
-
-func touched():
-	# TODO compare heights
-	return "hurt"

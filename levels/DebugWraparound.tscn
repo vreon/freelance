@@ -1,15 +1,14 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://levels/DebugWraparound.gd" type="Script" id=1]
 [ext_resource path="res://tilesets/debug/debug.tres" type="TileSet" id=2]
-[ext_resource path="res://levels/Lava.gd" type="Script" id=3]
-[ext_resource path="res://backgrounds/grid/grid.tscn" type="PackedScene" id=4]
-[ext_resource path="res://utilities/AutoCameraBounds.gd" type="Script" id=5]
-[ext_resource path="res://utilities/Door.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Lance.tscn" type="PackedScene" id=7]
-[ext_resource path="res://ui/GUI.tscn" type="PackedScene" id=8]
-[ext_resource path="res://enemies/Tilter.tscn" type="PackedScene" id=9]
-[ext_resource path="res://utilities/WrapAroundArea2D.gd" type="Script" id=10]
+[ext_resource path="res://backgrounds/grid/grid.tscn" type="PackedScene" id=3]
+[ext_resource path="res://utilities/AutoCameraBounds.gd" type="Script" id=4]
+[ext_resource path="res://utilities/Door.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Lance.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/GUI.tscn" type="PackedScene" id=7]
+[ext_resource path="res://enemies/Tilter.tscn" type="PackedScene" id=8]
+[ext_resource path="res://utilities/WrapAroundArea2D.gd" type="Script" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -28,37 +27,37 @@ tile_data = PoolIntArray( -1, 10, 0, -65536, 10, 0, -65535, 10, 0, -65534, 10, 0
 modulate = Color( 1.2, 0, 0, 1 )
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
+collision_mask = 2
 format = 1
 tile_data = PoolIntArray( 720896, 10, 0, 720897, 10, 0, 720898, 10, 0, 720899, 10, 0, 720900, 10, 0, 720901, 10, 0, 720902, 10, 0, 720914, 10, 0, 720915, 10, 0, 720916, 10, 0, 720917, 10, 0, 720918, 10, 0, 720919, 10, 0, 720920, 10, 0 )
-script = ExtResource( 3 )
 
-[node name="GridBackground" parent="." instance=ExtResource( 4 )]
+[node name="GridBackground" parent="." instance=ExtResource( 3 )]
 
 [node name="AutoCameraBounds" type="Node" parent="."]
-script = ExtResource( 5 )
+script = ExtResource( 4 )
 tile_map = NodePath("../TileMap")
 camera_man = NodePath("../Lance")
 
-[node name="DebugDoor" parent="." instance=ExtResource( 6 )]
+[node name="DebugDoor" parent="." instance=ExtResource( 5 )]
 position = Vector2( 192, 16 )
 
-[node name="Lance" parent="." instance=ExtResource( 7 )]
+[node name="Lance" parent="." instance=ExtResource( 6 )]
 position = Vector2( 176, 32 )
 
-[node name="GUI" parent="." instance=ExtResource( 8 )]
+[node name="GUI" parent="." instance=ExtResource( 7 )]
 
-[node name="Tilter" parent="." instance=ExtResource( 9 )]
+[node name="Tilter" parent="." instance=ExtResource( 8 )]
 position = Vector2( 288, 80 )
 
-[node name="Tilter2" parent="." instance=ExtResource( 9 )]
+[node name="Tilter2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 112, 80 )
 
-[node name="Tilter3" parent="." instance=ExtResource( 9 )]
+[node name="Tilter3" parent="." instance=ExtResource( 8 )]
 position = Vector2( 200, 136 )
 
 [node name="WrapAroundArea2D" type="Area2D" parent="."]
 position = Vector2( 200, 88 )
-script = ExtResource( 10 )
+script = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WrapAroundArea2D"]
 visible = false

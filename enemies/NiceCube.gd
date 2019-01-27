@@ -104,16 +104,11 @@ func set_on_fire():
 	on_fire = true
 	$Light2D.visible = true
 
-func attacked():
+func hurt(amount, _type=Hurtbox.DamageType.PHYSICAL, _origin=null, _force=0):
 	if animation_player.current_animation == "become_angry" and not on_fire:
-		return "deflected"
-	
+		return Hurtbox.DamageResult.DEFLECTED
+
 	if not angry:
 		become_angry()
 
-	return "touched" if on_fire else "attacked"
-
-func touched():
-	if on_fire:
-		return "burned"
-	return "hurt"
+	return Hurtbox.DamageResult.DEFLECTED if on_fire else Hurtbox.DamageResult.DEALT

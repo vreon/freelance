@@ -58,7 +58,7 @@ var can_move = true
 
 var velocity = Vector2(0, 0)
 var facing_dir = 1
-var hitstun = 0
+var hitstunned = 0
 
 var spark_scene = load("res://effects/Spark.tscn")
 
@@ -86,15 +86,15 @@ func _physics_process(delta):
 	var jump_speed = 0
 	pressing_move = false
 	
-	if can_move and not hitstun and Input.is_action_pressed("move_left"):
+	if can_move and not hitstunned and Input.is_action_pressed("move_left"):
 		pressing_move = true
 		facing_dir = -1
 	
-	if can_move and not hitstun and Input.is_action_pressed("move_right"):
+	if can_move and not hitstunned and Input.is_action_pressed("move_right"):
 		pressing_move = true
 		facing_dir = 1
 	
-	if can_move and not hitstun and not on_floor and Input.is_action_just_pressed("drop"):
+	if can_move and not hitstunned and not on_floor and Input.is_action_just_pressed("drop"):
 		attacking = true
 		velocity.y = MAX_FALL_SPEED
 		$Drop.play()
@@ -107,7 +107,7 @@ func _physics_process(delta):
 		# TODO: Play anim enter door
 		$Door.play()
 	
-	if can_move and not hitstun and (Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("move_up")):
+	if can_move and not hitstunned and (Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("move_up")):
 		attacking = false
 		
 		if on_floor:
@@ -180,8 +180,8 @@ func _physics_process(delta):
 	# TODO: clumsy
 	if door:
 		sprite.modulate = Color(0.8, 0.8, 0.8)
-	elif hitstun:
-		var mod = (int(hitstun * 100) % 2) * 0.3 + 0.2
+	elif hitstunned:
+		var mod = (int(hitstunned * 100) % 2) * 0.3 + 0.2
 		sprite.modulate = Color(1.0, mod, mod)
 	else:
 		sprite.modulate = Color(1.0, 1.0, 1.0)
@@ -194,7 +194,7 @@ func _physics_process(delta):
 	if velocity.y <= 0:
 		attacking = false
 
-	hitstun = max(0, hitstun - delta)
+	hitstunned = max(0, hitstunned - delta)
 	
 	$DebugStuff.visible = global.debug_overlays
 	$DebugStuff/DebugVelocityLine.points[1] = velocity
@@ -204,20 +204,56 @@ func _physics_process(delta):
 	was_on_floor = on_floor
 	was_on_wall = on_wall
 	was_on_ceiling = on_ceiling
+	
+func _on_hurtbox_entered(body, hurtbox):
+	if body != self:
+		return
+
+	hurt(
+		hurtbox.damage_amount,
+		hurtbox.damage_type,
+		hurtbox.get_global_transform().origin,
+		hurtbox.hitstun_force
+	)
+	
+func hurt(amount, type=Hurtbox.DamageType.PHYSICAL, origin=null, force=0):
+	if hitstunned:
+		return Hurtbox.DamageResult.IGNORED
+		
+	if attacking and type == Hurtbox.DamageType.PHYSICAL:
+		return Hurtbox.DamageResult.IGNORED
+	
+	match type:
+		Hurtbox.DamageType.PHYSICAL, Hurtbox.DamageType.BURN, Hurtbox.DamageType.SHOCK:
+			$Ouch.play()
+			continue
+		Hurtbox.DamageType.BURN:
+			$Burned.play()
+		Hurtbox.DamageType.SHOCK:
+			$Shocked.play()
+	
+	if origin:
+		velocity = (get_global_transform().origin - origin).normalized() * force
+		$DebugStuff/HitstunLine.points[1] = velocity
+
+	hitstunned = HITSTUN_DURATION
+	
+	global.player_health -= amount
+	emit_signal("health_changed", global.player_health)
+	return Hurtbox.DamageResult.DEALT
 
 func handle_collision(collider, position):
-	var attack_result = null
-	var touch_result = null
+	var damage_result = null
 	
-	if on_floor and attacking and collider.has_method("attacked"):
-		attack_result = collider.attacked()
-		match attack_result:
-			true, "attacked":
+	if on_floor and attacking and collider.has_method("hurt"):
+		damage_result = collider.hurt(20, Hurtbox.DamageType.PHYSICAL)
+		match damage_result:
+			Hurtbox.DamageResult.DEALT:
 				$Attack.play()
 				var spark = spark_scene.instance()
 				get_parent().add_child(spark)
 				spark.position = position
-			false, "deflected":
+			Hurtbox.DamageResult.DEFLECTED:
 				$ShieldHit.play()
 				var spark = spark_scene.instance()
 				spark.scale = Vector2(0.5, 0.5)
@@ -225,25 +261,7 @@ func handle_collision(collider, position):
 				get_parent().add_child(spark)
 				spark.position = position
 	
-	if not hitstun and (not attacking or attack_result == "touched") and collider.has_method("touched"):
-		touch_result = collider.touched()
-		match touch_result:
-			"hurt", "burned", "shocked":
-				$Ouch.play()
-				velocity = (self.position - position).normalized() * HITSTUN_SPEED
-				hitstun = HITSTUN_DURATION
-				continue
-			"hurt":
-				# TODO: get damage amount from collider
-				take_damage(20)
-			"burned":
-				$Burned.play()
-				take_damage(30)
-			"shocked":
-				$Shocked.play()
-				take_damage(30)
-		
-	if not touch_result or touch_result == "none":
+	if not damage_result:
 		# Hit a bog-standard collider.
 		# Find out how fast we were going, and whether
 		# we need to bounce or what.
@@ -276,10 +294,6 @@ func handle_collision(collider, position):
 				velocity.x *= -WALL_BOUNCE_FACTOR
 		elif on_wall:
 			velocity.x = 0
-			
-func take_damage(amount):
-	global.player_health -= amount
-	emit_signal("health_changed", global.player_health)
 
 func play_anim(anim_name):
 	if anim_player.is_playing() and anim_player.current_animation == anim_name:
