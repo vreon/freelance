@@ -4,6 +4,7 @@ class_name Hurtbox
 
 enum DamageType {
 	PHYSICAL,
+	SPIKE,
 	BURN,
 	SHOCK
 }

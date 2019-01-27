@@ -175,6 +175,7 @@ current = true
 position = Vector2( 200, 176 )
 script = ExtResource( 14 )
 damage_amount = 999.0
+damage_type = 1
 hitstun_force = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Hurtbox"]
