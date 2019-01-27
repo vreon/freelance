@@ -88,10 +88,10 @@ position = Vector2( 352, 112 )
 
 [node name="Tilter2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 328, 72 )
-max_speed = Vector2( 150, 60 )
+max_speed = Vector2( 100, 40 )
 accel_magnitude = 70
 follow_distance = 50
-squirreliness_max = 2
+squirreliness_max = 3
 texture = ExtResource( 9 )
 
 [node name="Water" type="Area2D" parent="."]

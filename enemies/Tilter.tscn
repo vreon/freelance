@@ -65,12 +65,14 @@ position = Vector2( 0, -3 )
 points = PoolVector2Array( 0, 0, 0, 50 )
 width = 2.0
 default_color = Color( 1, 0.4, 0.4, 1 )
+texture_mode = 277222256
 
 [node name="DebugAccelerationLine" type="Line2D" parent="DebugStuff"]
 position = Vector2( 0, -3 )
 points = PoolVector2Array( 0, 0, 0, 50 )
 width = 2.0
 default_color = Color( 0.4, 1, 0.815686, 1 )
+texture_mode = 114559328
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/fall = SubResource( 2 )
