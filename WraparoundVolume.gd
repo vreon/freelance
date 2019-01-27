@@ -1,7 +1,5 @@
 extends Area2D
 
-export var offset = -400
-
 export(bool) var wrap_vertical = false
 export(bool) var wrap_horizontal = true
 
