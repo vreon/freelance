@@ -6,7 +6,8 @@ enum DamageType {
 	PHYSICAL,
 	SPIKE,
 	BURN,
-	SHOCK
+	SHOCK,
+	NONE,
 }
 
 enum DamageResult {

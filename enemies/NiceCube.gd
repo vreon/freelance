@@ -113,4 +113,4 @@ func hurt(amount, _type=Hurtbox.DamageType.PHYSICAL, _origin=null, _force=0):
 	if not angry:
 		become_angry()
 
-	return Hurtbox.DamageResult.DEFLECTED if on_fire else Hurtbox.DamageResult.DEALT
+	return Hurtbox.DamageResult.IGNORED if on_fire else Hurtbox.DamageResult.DEALT

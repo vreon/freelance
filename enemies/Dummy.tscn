@@ -1,9 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://enemies/Dummy.gd" type="Script" id=1]
 [ext_resource path="res://tilesets/debug/debug.png" type="Texture" id=2]
+[ext_resource path="res://enemies/Hurtbox.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
+
+extents = Vector2( 7, 7 )
+
+[sub_resource type="RectangleShape2D" id=2]
 
 extents = Vector2( 8, 8 )
 
@@ -22,4 +27,13 @@ frame = 10
 visible = false
 position = Vector2( 8, 8 )
 shape = SubResource( 1 )
+
+[node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2( 8, 8 )
+script = ExtResource( 3 )
+damage_type = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+visible = false
+shape = SubResource( 2 )
 

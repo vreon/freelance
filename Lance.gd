@@ -38,6 +38,12 @@ const FLOOR_BOUNCE_FACTOR = 0.5
 const WALL_BOUNCE_SPEED = 100
 const WALL_BOUNCE_FACTOR = 0.8
 
+# When Lance successfully attacks an enemy, make him ignore hurtboxes for
+# a very brief period. This seems to help with the "attacking an enemy still
+# hurts Lance" problem, even though Lance already ignores PHYSICAL damage
+# while entering a hurtbox. Hmm...
+const ATTACK_INVULNERABILITY_DURATION = 0.1
+
 # TODO ideas
 # Don't allow AIR_MOVE_FORCE until the first flap
 # Variable jump height (from ground) based on button hold (like Mario)
@@ -59,6 +65,7 @@ var can_move = true
 var velocity = Vector2(0, 0)
 var facing_dir = 1
 var hitstunned = 0
+var attack_invulnerability_timer = 0
 
 var spark_scene = load("res://effects/Spark.tscn")
 
@@ -222,6 +229,7 @@ func _physics_process(delta):
 		attacking = false
 
 	hitstunned = max(0, hitstunned - delta)
+	attack_invulnerability_timer = max(0, attack_invulnerability_timer - delta)
 	
 	$DebugStuff.visible = global.debug_overlays
 	$DebugStuff/DebugVelocityLine.points[1] = velocity
@@ -244,12 +252,14 @@ func _on_hurtbox_entered(body, hurtbox):
 	)
 	
 func hurt(amount, type=Hurtbox.DamageType.PHYSICAL, origin=null, force=0):
-	if hitstunned:
+	if (
+		hitstunned or
+		(attacking and type == Hurtbox.DamageType.PHYSICAL) or
+		(type == Hurtbox.DamageType.NONE) or
+		(attack_invulnerability_timer > 0)
+	):
 		return Hurtbox.DamageResult.IGNORED
-		
-	if attacking and type == Hurtbox.DamageType.PHYSICAL:
-		return Hurtbox.DamageResult.IGNORED
-	
+
 	$Ouch.play()
 	
 	match type:
@@ -279,6 +289,7 @@ func handle_collision(collider, position):
 				var spark = spark_scene.instance()
 				get_parent().add_child(spark)
 				spark.position = position
+				attack_invulnerability_timer = ATTACK_INVULNERABILITY_DURATION
 			Hurtbox.DamageResult.DEFLECTED:
 				$ShieldHit.play()
 				var spark = spark_scene.instance()
@@ -286,6 +297,7 @@ func handle_collision(collider, position):
 				spark.modulate = Color(1.0, 1.0, 1.0, 0.5)
 				get_parent().add_child(spark)
 				spark.position = position
+				attack_invulnerability_timer = ATTACK_INVULNERABILITY_DURATION
 
 func play_anim(anim_name):
 	if anim_player.is_playing() and anim_player.current_animation == anim_name:

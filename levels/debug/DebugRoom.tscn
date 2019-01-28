@@ -58,7 +58,7 @@ destination_level = "debug/DebugWraparound"
 [node name="DummyAttackable" parent="." instance=ExtResource( 5 )]
 modulate = Color( 0.278431, 0.768627, 0.0196078, 1 )
 position = Vector2( 384, 96 )
-attack_result = "attacked"
+attack_damage_result = 0
 
 [node name="DummyWall" parent="." instance=ExtResource( 5 )]
 position = Vector2( 352, 96 )
@@ -66,31 +66,28 @@ position = Vector2( 352, 96 )
 [node name="DummyShield" parent="." instance=ExtResource( 5 )]
 modulate = Color( 0, 0.356863, 1, 1 )
 position = Vector2( 416, 96 )
-attack_result = "deflected"
+attack_damage_result = 1
 
 [node name="DummyEnemy" parent="." instance=ExtResource( 5 )]
 modulate = Color( 1, 0.619608, 0, 1 )
 position = Vector2( 448, 96 )
-attack_result = "attacked"
-touch_result = "hurt"
+attack_damage_result = 0
+touch_damage_type = 0
 
 [node name="DummySpikes" parent="." instance=ExtResource( 5 )]
 modulate = Color( 0.192157, 0.192157, 0.192157, 1 )
 position = Vector2( 480, 96 )
-attack_result = "touched"
-touch_result = "hurt"
+touch_damage_type = 1
 
 [node name="DummyLava" parent="." instance=ExtResource( 5 )]
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 512, 96 )
-attack_result = "touched"
-touch_result = "burned"
+touch_damage_type = 2
 
 [node name="DummyShock" parent="." instance=ExtResource( 5 )]
 modulate = Color( 0, 1, 0.988235, 1 )
 position = Vector2( 544, 96 )
-attack_result = "touched"
-touch_result = "shocked"
+touch_damage_type = 3
 
 [node name="Label" type="Label" parent="."]
 margin_left = 68.0
