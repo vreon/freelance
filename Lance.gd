@@ -72,11 +72,6 @@ var spark_scene = load("res://effects/Spark.tscn")
 onready var anim_player = $AnimationPlayer
 onready var sprite = $Sprite
 onready var attack_trail = $AttackTrail
-
-func _ready():
-	# XXX: Particle2D on HTML5 causes rendering to stop until particles are dead, wtf
-	if OS.get_name() != "HTML5":
-		attack_trail.visible = true
 	
 func _physics_process(delta):
 	anim_player.playback_speed = 1
