@@ -16,14 +16,14 @@
 [ext_resource path="res://sounds/door.wav" type="AudioStream" id=14]
 [ext_resource path="res://sounds/splash.wav" type="AudioStream" id=15]
 
-[sub_resource type="Gradient" id=6]
+[sub_resource type="Gradient" id=1]
 
 colors = PoolColorArray( 1, 1, 1, 0.121569, 1, 1, 1, 0 )
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=2]
 
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -31,47 +31,15 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Rect2( 32, 0, 32, 32 ) ]
-}
-
-[sub_resource type="Animation" id=2]
-
-length = 0.2
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ Rect2( 64, 0, 32, 32 ), Rect2( 32, 0, 32, 32 ) ]
+"values": [ 1 ]
 }
 
 [sub_resource type="Animation" id=3]
 
+length = 0.2
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Rect2( 0, 0, 32, 32 ) ]
-}
-
-[sub_resource type="Animation" id=4]
-
-length = 0.4
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -80,10 +48,41 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ Rect2( 128, 0, 32, 32 ), Rect2( 96, 0, 32, 32 ) ]
+"values": [ 2, 1 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=5]
+[sub_resource type="Animation" id=4]
+
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=5]
+
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=6]
 
 radius = 5.0
 height = 4.0
@@ -101,18 +100,19 @@ lifetime = 0.5
 local_coords = false
 texture = ExtResource( 2 )
 gravity = Vector2( 0, 0 )
-color_ramp = SubResource( 6 )
+color_ramp = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )
-region_enabled = true
-region_rect = Rect2( 32, 0, 32, 32 )
+hframes = 13
+frame = 12
+region_rect = Rect2( 96, 0, 32, 32 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/fall = SubResource( 1 )
-anims/flap = SubResource( 2 )
-anims/idle = SubResource( 3 )
-anims/walk = SubResource( 4 )
+anims/fall = SubResource( 2 )
+anims/flap = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/walk = SubResource( 5 )
 
 [node name="Jump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
@@ -184,7 +184,7 @@ drag_margin_bottom = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, 3 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="DebugStuff" type="Node2D" parent="."]
 visible = false
@@ -201,14 +201,12 @@ texture_mode = 1065353216
 position = Vector2( 0, -3 )
 points = PoolVector2Array( 0, 0, 0, 50 )
 width = 2.0
-texture_mode = 0
 
 [node name="HitstunLine" type="Line2D" parent="DebugStuff"]
 position = Vector2( 0, -3 )
 points = PoolVector2Array( 0, 0, 0, 50 )
 width = 2.0
 default_color = Color( 0.827451, 1, 0, 1 )
-texture_mode = 0
 
 [node name="DebugVelocityLabel" type="Label" parent="DebugStuff"]
 margin_left = -22.0

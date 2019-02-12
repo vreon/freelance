@@ -155,7 +155,9 @@ func _physics_process(delta):
 		if on_floor:
 			if abs(velocity.x) > 1:
 				play_anim("walk")
-				anim_player.playback_speed = velocity.x / 50  # TODO: lerp
+				anim_player.playback_speed = max(abs(velocity.x / 80), 0.5)  # TODO: lerp
+				if sign(velocity.x) != facing_dir:
+					anim_player.playback_speed *= -1
 			else:
 				play_anim("idle")
 		elif anim_player.current_animation != "flap":
