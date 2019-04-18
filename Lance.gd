@@ -28,6 +28,7 @@ var drag = AIR_FRICTION
 var jump_force = 170
 var flap_force = 115
 const MAX_FALL_SPEED = 200
+const FALL_START_SPEED = 75  # For animation and sound only
 const HITSTUN_DURATION = 0.3
 
 # When and how hard to bounce off of the floor
@@ -88,7 +89,7 @@ func _physics_process(delta):
 			if abs(velocity.y) >= FLOOR_BOUNCE_SPEED:
 				$Hit.play()
 				velocity.y *= -FLOOR_BOUNCE_FACTOR
-			else:
+			elif abs(velocity.y) >= FALL_START_SPEED:
 				$Land.play()
 		else:
 			velocity.y = 0
@@ -160,7 +161,7 @@ func _physics_process(delta):
 					anim_player.playback_speed *= -1
 			else:
 				play_anim("idle")
-		elif anim_player.current_animation != "flap":
+		elif anim_player.current_animation != "flap" and abs(velocity.y) >= FALL_START_SPEED:
 			play_anim("fall")
 
 	
