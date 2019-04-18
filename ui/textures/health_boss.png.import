@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/health_boss.png-53cbeb825babd4fac88e0b00d78e290e.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

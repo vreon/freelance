@@ -8,7 +8,6 @@
 [ext_resource path="res://ui/ui_doodle.png" type="Texture" id=6]
 
 [sub_resource type="Shader" id=1]
-
 code = "// Star Nest by Pablo Roman Andrioli
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -104,7 +103,6 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id=2]
-
 shader = SubResource( 1 )
 
 [node name="BossTest" type="Node2D"]

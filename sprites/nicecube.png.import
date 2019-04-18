@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/nicecube.png-7098f15261f0ba7697452e0343432c86.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

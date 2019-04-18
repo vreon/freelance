@@ -17,11 +17,9 @@
 [ext_resource path="res://sounds/splash.wav" type="AudioStream" id=15]
 
 [sub_resource type="Gradient" id=1]
-
 colors = PoolColorArray( 1, 1, 1, 0.121569, 1, 1, 1, 0 )
 
 [sub_resource type="Animation" id=2]
-
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -36,7 +34,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=3]
-
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -52,7 +49,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=4]
-
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -67,7 +63,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=5]
-
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -83,7 +78,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=6]
-
 radius = 5.0
 height = 4.0
 
@@ -195,7 +189,6 @@ position = Vector2( 0, -3 )
 points = PoolVector2Array( 0, 0, 0, 50 )
 width = 2.0
 default_color = Color( 1, 0.4, 0.4, 1 )
-texture_mode = 1065353216
 
 [node name="DebugVelocityLine2" type="Line2D" parent="DebugStuff"]
 position = Vector2( 0, -3 )
@@ -207,6 +200,7 @@ position = Vector2( 0, -3 )
 points = PoolVector2Array( 0, 0, 0, 50 )
 width = 2.0
 default_color = Color( 0.827451, 1, 0, 1 )
+texture_mode = 0
 
 [node name="DebugVelocityLabel" type="Label" parent="DebugStuff"]
 margin_left = -22.0

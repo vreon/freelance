@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/lance_trail_right.png-ef9aa3b79cda0db2c61fbfb97e2c11ea.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

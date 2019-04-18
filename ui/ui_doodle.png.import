@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/ui_doodle.png-878396737cf6bde7f614253b9605ee28.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
