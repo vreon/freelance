@@ -1,8 +1,8 @@
 extends Node
 
 var current_scene = null
-# const DEBUG_BUTTON = 10  # Select
-const DEBUG_BUTTON = 16  # Home
+const DEBUG_BUTTON = 10  # Select
+# const DEBUG_BUTTON = 16  # Home
 
 var player_health = 100
 
