@@ -115,4 +115,3 @@ GAMEPAD works too!
 [node name="Confirm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 volume_db = -10.0
-

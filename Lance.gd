@@ -73,7 +73,7 @@ var spark_scene = load("res://effects/Spark.tscn")
 onready var anim_player = $AnimationPlayer
 onready var sprite = $Sprite
 onready var attack_trail = $AttackTrail
-	
+
 func _physics_process(delta):
 	anim_player.playback_speed = 1
 	
