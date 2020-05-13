@@ -16,7 +16,7 @@ signal health_changed
 const GROUND_MOVE_FORCE = 4
 const AIR_MOVE_FORCE = 3
 const AIR_FRICTION = 0.001
-const GROUND_FRICTION = 0.03
+const GROUND_FRICTION = 0.04
 const MAX_AIR_SPEED = 200
 const MAX_GROUND_SPEED = 200
 const HITSTUN_SPEED = 150
@@ -33,11 +33,11 @@ const HITSTUN_DURATION = 0.3
 
 # When and how hard to bounce off of the floor
 const FLOOR_BOUNCE_SPEED = MAX_AIR_SPEED * (1 - AIR_FRICTION)
-const FLOOR_BOUNCE_FACTOR = 0.5
+const FLOOR_BOUNCE_FACTOR = 0.4
 
 # When and how hard to bounce off of a wall
-const WALL_BOUNCE_SPEED = 100
-const WALL_BOUNCE_FACTOR = 0.8
+const WALL_BOUNCE_SPEED = 150
+const WALL_BOUNCE_FACTOR = 0.5
 
 # When Lance successfully attacks an enemy, make him ignore hurtboxes for
 # a very brief period. This seems to help with the "attacking an enemy still
