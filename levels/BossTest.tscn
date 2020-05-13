@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://levels/BossTest.gd" type="Script" id=1]
 [ext_resource path="res://backgrounds/leo/stars.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Lance.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sprites/bubble.png" type="Texture" id=5]
 [ext_resource path="res://ui/ui_doodle.png" type="Texture" id=6]
+[ext_resource path="res://icon.png" type="Texture" id=7]
 
 [sub_resource type="Shader" id=1]
 code = "// Star Nest by Pablo Roman Andrioli
@@ -105,6 +106,27 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
 
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform float frequency = 60;
+uniform float depth = 0.005;
+
+void fragment() {
+	vec2 uv = SCREEN_UV;
+	uv.x += sin(uv.y * frequency + TIME) * depth;
+	uv.x = clamp(uv.x, 0.0, 1.0);
+	vec3 c = textureLod(SCREEN_TEXTURE, uv, 0.0).rgb;
+
+	COLOR.rgb = c;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+shader_param/frequency = 60.0
+shader_param/depth = 0.005
+
 [node name="BossTest" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -133,3 +155,14 @@ texture = ExtResource( 5 )
 position = Vector2( 200, 112 )
 texture = ExtResource( 6 )
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+material = SubResource( 4 )
+margin_left = 268.0
+margin_top = 1.0
+margin_right = 374.0
+margin_bottom = 20.0
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
